@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.xworkz.landrecords.dto.AdminDto;
+import com.xworkz.landrecords.dto.LandRecordsDto;
 import com.xworkz.landrecords.service.AdminService;
 
 @Controller
@@ -20,9 +21,10 @@ public class AdminController {
 	public String loginData(@RequestParam String email, Model model) {
 		boolean status = service.signIn(email, model);
 		if (status) {
+			System.out.println("Email Verified");
 			return "SignIn";
 		} else {
-			model.addAttribute("IsAccountExist", "Account not Exist");
+			model.addAttribute("IsAccountExist", "Account Not Exist");
 			return "SignIn";
 		}
 	}
@@ -33,12 +35,12 @@ public class AdminController {
 
 		if (sentData != null) {
 			System.out.println("otp verified");
+			model.addAttribute("dto", sentData);
 			return "Main";
 		} else {
 			System.out.println("Invalid OTP, Please enter correct OTP");
 			return "SignIn";
 		}
-
 	}
 
 }

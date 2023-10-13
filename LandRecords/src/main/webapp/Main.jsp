@@ -11,28 +11,53 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+	
+	<style type="text/css">
+	
+	#land {
+	color: white;
+	}
+	
+	#adminName {
+	color: white;
+	padding-left: 1000px;
+	}
+	
+	#logout {
+	color: white;
+	}
+	button{
+	 margin-left: 500px;
+	
+	}
+	
+	</style>
 
 </head>
 <body>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+			<div class="container">
+				<a class="navbar-brand" id="land" href="#">LandRecords</a>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<a class="navbar-brand" id="adminName"><span
+						style="color: primary;"></span>${dto.adminName}</a>
+				</div>
+			</div>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-		<div class="container">
-			<a class="navbar-brand" id="land" href="#">LandRecords</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNav" aria-controls="navbarNav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</div>
-	</nav>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" id="logout"
+					href="SignIn.jsp">LogOut</a></li>
+			</ul>
+		</nav>
+	</header>
+	
+	<div style="height: 100px"></div>
 
-	<!-- Add Bootstrap JS (Popper.js and jQuery are required) -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+	<a href="Save.jsp"><button class="btn btn-primary" type="submit">AddRecords</button></a><a href="Read.jsp"><button class="btn btn-primary" type="submit">ViewRecords</button></a>
+	
+	
+	
 	<div style="height: 523px"></div>
 
 	<footer class="footer bg-dark text-light py-3">

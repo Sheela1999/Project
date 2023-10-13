@@ -24,7 +24,7 @@
 	font-weight: bolder;
 }
 
-.h4 {
+.h6 {
 	color: red;
 }
 
@@ -81,13 +81,12 @@
 
 					<div class="form-group">
 						<label for="email"> </label> <input type="email" name="email"
-							class="form-control" id="email" placeholder="Enter Email Address" required>
+							class="form-control" id="email" value="<%= (request.getParameter("email") != null) ? request.getParameter("email") : "" %>" placeholder="Enter Email Address" required>
 					</div>
-					<h4 class="model">${IsEmailValid}</h4>
 					
-					<h4 class="model">${IsNameAndEmailValid}</h4>
+					<h6 class="model">${IsEmailValid}</h6>
 					
-					<h4 class="model">${IsAccountExist}</h4>
+					<h6 class="model">${IsAccountExist}</h6>
 					
 					 <center><button style="text-align: center;"  type="submit" class="btn btn-primary">Send OTP</button></center>
                      </form>
@@ -96,7 +95,7 @@
 						<label for="otp"> </label> <input type="number" name="otp"
 							class="form-control" id="otp" placeholder="Enter OTP">
 					</div>
-					<h4 class="model">${IsOTPvalid}</h4>
+					<h6 class="model">${IsOTPvalid}</h6>
 
 					<center><button  style="text-align: center;" type="submit" class="btn btn-primary">SignIn</button></center>
 				</form>

@@ -28,6 +28,7 @@ public class AdminRepoImpl implements AdminRepo{
 
 	@Override
 	public boolean updateOtpByEmail(String otp, String email) {
+
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		Query query = em.createNamedQuery("updateOtpByEmail");
@@ -56,5 +57,8 @@ public class AdminRepoImpl implements AdminRepo{
 		System.out.println(dto);
 		return dto;
 	}
+	
+	
+	
 
 }

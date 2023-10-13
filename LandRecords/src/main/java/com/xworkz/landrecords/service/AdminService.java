@@ -15,5 +15,7 @@ public interface AdminService {
 	public boolean signIn(String email, Model model);
 	
 	public AdminDto otpValidation(String otp, Model model);
+	
+	public boolean SendOtpToEmail(String otp, String email, Model model);
 
 }
