@@ -23,6 +23,543 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+
+#district {
+	text-transform: uppercase;
+}
+
+#taluk {
+	text-transform: uppercase;
+}
+
+#hobli {
+	text-transform: uppercase;
+}
+
+#village {
+	text-transform: uppercase;
+}
+</style>
+
+<script type="text/javascript">
+
+function populateDropdowns() {
+	var selectedState = document.getElementById("state");
+    var districtDropdown = document.getElementById("district");
+    var talukDropdown = document.getElementById("talhuk"); // Fix this line
+    var hobliDropdown = document.getElementById("hobli");
+    var villageDropdown = document.getElementById("village");
+
+  
+	
+    if (selectedState === "KARNATAKA") {
+        populateDropdown(districtDropdown, [
+            "--Select District--",
+            "BELGAUM",
+            "MYSORE",
+            "SHIVAMOGGA",
+            "PANDAVAPURA",
+            
+            
+        ]);
+    }
+	
+    
+    document.getElementById("district").addEventListener("change", function() {
+        var selectedDistrict = this.value;
+        var talukDropdown = document.getElementById("talhuk");
+        talukDropdown.innerHTML = ""; // Clear existing options 
+        
+        if (selectedDistrict === "SHIVAMOGGA") {
+           
+            populateDropdown(talukDropdown, [
+                "--SELECT TALHUK--",
+                "HOSANAGARA",
+                "SAGARA",
+                "SORABA",
+                "THIRTHAHALLI"
+                
+            ]);
+
+            
+            
+        } else if (selectedDistrict === "MANDYA") {
+            populateDropdown(talukDropdown, [
+                "--SELECT TALHUK--",
+                "KRPET",
+                "MADDUR",
+                "NAGAMANGALA",
+                "PANDAVAPURA"
+                
+            ]);
+           
+        }
+
+        else if (selectedDistrict === "MYSORE") {
+            populateDropdown(talukDropdown, [
+                "--SELECT TALHUK--",
+                "HEGGADADEVANAKOTE",
+                "HUNSUR",
+                "MYSORE",
+                "NANJANGUD"
+                
+                
+            ]);
+            
+        }
+
+        else if (selectedDistrict === "BELGAUM") {
+            populateDropdown(talukDropdown, [
+                "--SELECT TALHUK--",
+                "GOKAK",
+                "KHANAPUR",
+                "RAIBAG",
+                "RAMDURG"
+           
+            ]);
+            
+        }
+    });
+
+    document.getElementById("talhuk").addEventListener("change", function() {
+    var selectedTaluk  = this.value;
+    var hobliDropdown = document.getElementById("hobli");
+    hobliDropdown.innerHTML =" ";
+      
+    if (selectedTaluk === "HOSANAGARA") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "HUNCHA",
+            "NAGARA"
+        ]);
+       
+    } else if (selectedTaluk === "THIRTHAHALLI") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "AGRAHARA",
+            "AGUMBE"
+        ]);
+    } else if (selectedTaluk === "SAGARA") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "ANANDAPURA",
+            "AVINAHALLI"
+        ]);
+    } else if (selectedTaluk === "SORABA") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "JADE",
+            "ULAVI"
+        ]);
+    }
+
+    else if (selectedTaluk === "KRPET") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "AKKIHEBBAL",
+            "BUKINAKERE"
+        ]);  
+    }else if (selectedTaluk === "MADDUR") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "ATAGURU HOBLI",
+            "KOPPA HOBALI"
+        ]);  
+    }else if (selectedTaluk === "PANDAVAPURA") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+          
+            "CHINAKURALI",
+            "MELUKOTE"
+             
+        ]);  
+    }else if (selectedTaluk === "NAGAMANGALA") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+             
+            "BELLURU",
+            "BINDIGANAVILLE"
+          
+        ]);  
+    }else if (selectedTaluk === "MYSORE") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "KASABA",
+            "VARUNA"
+         
+        ]);  
+    }else if (selectedTaluk ===  "HEGGADADEVANAKOTE") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "ANTARASANTE",
+            "HAMPAPURA"
+        ]);  
+    }else if (selectedTaluk === "HUNSUR") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "BILIKERE",
+            "GAVADAGERE",
+           
+        ]);  
+    }else if (selectedTaluk === "NANJANGUD") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "CHIKKAYYANACHATRA",
+            "HULLAHALLI"
+        ]);  
+    }else if (selectedTaluk === "RAIBAG") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "KUDACHI",
+            "RAYBAGA"
+        ]);  
+    }else if (selectedTaluk === "GOKAK") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "GOKAK",
+            "KOWJALAGI"
+        ]);  
+    }else if (selectedTaluk === "RAMDURG") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "K CHANDARAGI",
+            "KATAKOLA",
+          
+        ]);  
+    }else if (selectedTaluk === "KHANAPUR") {
+        populateDropdown(hobliDropdown, [
+            "--SELECT HOBLI--",
+            "BEEDI",
+			"GUNJI"
+        ]);  
+    }
+ 
+});
+
+document.getElementById("hobli").addEventListener("change", function() {
+    var selectedHobli  = this.value;
+    var villageDropdown = document.getElementById("village");
+    villageDropdown.innerHTML = ""; // Clear existing options
+
+     if (selectedHobli === "HUNCHA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AMRUTA",
+            "ANEGADDE",
+            "BILLODI",
+            "BORIKOPPA"
+           
+            
+            
+        ]);  
+    } else if (selectedHobli === "NAGARA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "ANDAGADUDURU",
+           "BAISE",
+           "KABALE",
+           "KADIGERI"
+        ]);  
+    }else if (selectedHobli === "AGRAHARA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AGALABAGILU",
+             "AGASADI",
+             "ALURU",
+            "ARALASURALI"
+        ]);  
+    }else if (selectedHobli === "AGUMBE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AREHALLI",
+            "BALEHALLI",
+            "CHAKKODABILU",
+            "CHANGARA"
+        ]);  
+    }else if (selectedHobli === "ANANDAPURA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "ACHAPURA",
+             "ADURU",
+            "ATAVDI",
+           "BALLIBYELU"
+        ]);  
+    }else if (selectedHobli === "AVINAHALLI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "AMBARAGODLU",
+          "ARALEEKOPPA",
+             "BESURU",
+             "DEVASA"
+        ]);  
+    }else if (selectedHobli === "JADE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "ARETALAGADDE",
+            "BANKSANA",
+            "BANKAVALLI",
+             "BILAGALI"
+        ]);  
+    }else if (selectedHobli === "ULAVI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "AVALAGODU",
+           "BALAGODU",
+           "BARIGE",
+           "BHADRAPURA",
+          
+        ]);  
+    }else if (selectedHobli === "AKKIHEBBAL") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AIPANAHALLI",
+             "AKKIHEBBAL",
+              "ALAMBADI",
+              "ALENAHALLI"
+                            
+        ]);  
+    }else if (selectedHobli === "BUKINAKERE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AGASARAHALLI",
+            "AICHANAHALLI",
+             "ARALAKUPPE",
+            "ATTUPPE"
+                            
+                            
+        ]);  
+    }else if (selectedHobli === "ATAGURU HOBLI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+          "ALANSHETTIHALLI",
+          "ANKANATHAPURA" , 
+           "ATAGURU",
+        "BYALADAKERE"
+                            
+                            
+        ]);  
+    }else if (selectedHobli === "KOPPA HOBALI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "BEKKALALE",
+             "BOLARE",
+            "HOSAGALI",
+           "KIRANGURU"
+                            
+                            
+        ]);  
+    }else if (selectedHobli === "BELLURU") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+                "ADAKATAHALLI",  
+                "AGACHAHALLI",
+               "AMBALAJEERAHALLI",
+                "ANAKANAHALLI"
+                            
+                            
+        ]);  
+    }else if (selectedHobli === "BINDIGANAVILLE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "A CHENNAPURA",
+            "A NAGATTIHALLI",
+            "ADDIHALLI",
+            "ALEESANDRA",
+           
+           
+           
+                            
+        ]);  
+    }else if (selectedHobli === "CHINAKURALI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "ALPHALLI",
+           "ANTANAHALLI",
+            "ARALAKUPPE",
+            "ARALAKUPPENALA"
+                                   
+                            
+        ]);  
+    }else if (selectedHobli === "MELUKOTE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AMRUTHI",
+            "ANUNAHALLI",
+            "ANUVALLU",        
+            "ARAKANAKERE"
+                                   
+                            
+        ]);  
+    }else if (selectedHobli === "KASABA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "BOGADI",
+		    "GORURU",
+		     "KESARE",
+			"SATAGALLI"         
+                            
+        ]);  
+    }else if (selectedHobli === "VARUNA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "DANDIKERE",
+			"HONGATE",
+			"MARASHE",
+			"YADAKOLA"
+						 
+                            
+        ]);  
+    }else if (selectedHobli === "ANTARASANTE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "ANAGATTI",
+			"ANEMALA",
+			"HOSURU",
+			"JIYARA",
+						
+                            
+        ]);  
+    }else if (selectedHobli === "HAMPAPURA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "BETTAHALLI",
+			"DEVALAPURA",
+			"KARIGALA",
+			 "PURA",
+             		
+                            
+        ]);  
+    }else if (selectedHobli === "BILIKERE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "ASVALU",
+			"DALLALU",
+            "MADLAPURA",
+			"TIPPURU",
+			
+						
+                            
+        ]);  
+    }else if (selectedHobli === "GAVADAGERE") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "AGRAHARA",
+			"ATTIGUPPE",
+			"BELATTURU",
+			"HARAVE",
+						
+                            
+        ]);  
+    }else if (selectedHobli === "CHIKKAYYANACHATRA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+          "ADAKANANAHALLI",
+			"ALATTURU",
+			"BASAVANAPURA",
+			"BIDARAGUDU"
+
+        ]);  
+    }else if (selectedHobli === "HULLAHALLI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+             "AKALA",
+			 "AMAKALLI",
+			 "AMBALE",
+			 "ARIYURU"
+
+        ]);  
+    }else if (selectedHobli === "KUDACHI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "KUDACHI",
+           
+            "MORABA",
+            "MUGALAKHODA",
+			"NEELAJI",
+			
+		   
+        ]);  
+    }else if (selectedHobli === "RAYBAGA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+             "BAVACHI",
+		     "CHINCHALI",
+		    "DEVANAKATTI",
+		      "JODATTI"
+        ]);  
+    }else if (selectedHobli === "GOKAK") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "BALOBAL",
+			"BUDIHALA",
+			"DANDAPUR",
+			"GOKAKA"
+
+        ]);  
+    }else if (selectedHobli === "KOWJALAGI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+                "ADIBATTI",
+				"BETAGERI",
+				"KANDRATTI",
+				"MANNIKERI"
+
+        ]);  
+    }else if (selectedHobli === "K CHANDARAGI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "BEEDAKI",
+		   "BHAGOJIKOPPA",
+			"BIJAGUPI",
+			"BUDANURA"
+        ]);  
+    }else if (selectedHobli === "KATAKOLA") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+            "ARIBENCHI",
+			"BANNURA",
+			"BOCHABALA",
+			"CHILAMURA"
+						
+        ]);  
+    }else if (selectedHobli === "BEEDI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+           "ADI",
+			"BALAGUNDA",
+			"BEEDI",
+			"BHURANAKI"
+						
+						
+        ]);  
+    }else if (selectedHobli === "GUNJI") {
+        populateDropdown(villageDropdown, [
+            "--SELECT VILLAGE--",
+          "ABANALLE",
+		  "AKRALLI",
+		  "AMBEVADI",
+		  "ANAGADI"			
+        ]);  
+    }
+});
+
+
+    function populateDropdown(dropdown, options) {
+        for (var i = 0; i < options.length; i++) {
+            var option = document.createElement("option");
+            option.value = options[i];
+            option.text = options[i];
+            dropdown.appendChild(option);
+        }
+    }
+
+
+}
+
+</script>
 
 </head>
 <body>
@@ -52,8 +589,8 @@
 				<fieldset class="form-group">
 					<label style="text-transform: capitalize" class="form-lbl">State</label> <select class="form-control"
 						name="state">
-						<option selected>Select State</option>
-						<option value="Karnataka">Karnataka</option>
+						<option selected>SELECT STATE</option>
+						<option value="KARNATAKA">KARNATAKA</option>
 					</select>
 				</fieldset>
 			</div>
@@ -61,7 +598,7 @@
 			<div class="col-md-3">
 				<fieldset class="form-group">
 					<label class="form-lbl">District</label> <select
-						class="form-control" name="district">
+						class="form-control" name="district" id="district">
 						<option selected>Select District</option>
 						<option value="Belgaum">Belgaum</option>
 						<option value="Mysore">Mysore</option>
@@ -73,7 +610,7 @@
 			<div class="col-md-3">
 				<fieldset class="form-group">
 					<label class="form-lbl">Taluk</label> <select class="form-control"
-						name="taluk">
+						name="taluk" id="taluk" required>
 						<option selected>Select Taluk</option>
 						<option value="Raibag">Raibag</option>
 						<option value="Gokak">Gokak</option>
@@ -102,7 +639,7 @@
 			<div class="col-md-3">
 				<fieldset class="form-group">
 					<label class="form-lbl">Hobli</label> <select
-						class="form-control select2" name="hobli">
+						class="form-control select2" name="hobli" id="hobli" required>
 						<option selected>Select Hobli</option>
 						<!-- belgaum -->
 						<option value="Kudachi">Kudachi</option>
@@ -170,7 +707,7 @@
 			<div class="col-md-3">
 				<fieldset class="form-group">
 					<label class="form-lbl">Village</label> <select
-						class="form-control select2" name="village">
+						class="form-control select2" name="village" id="village" required>
 						<option selected>Select Village</option>
 
 						<!-- kudachi -->
@@ -370,6 +907,10 @@
 
 	</form>
 	<br>
+	<form action="">
+	
+	
+	</form>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -398,7 +939,6 @@
 			</div>
 		</div>
 	</footer>
-
 
 </body>
 </html>
