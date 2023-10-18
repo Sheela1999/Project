@@ -1,55 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>View Records</title>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-
-#district {
-	text-transform: uppercase;
-}
-
-#taluk {
-	text-transform: uppercase;
-}
-
-#hobli {
-	text-transform: uppercase;
-}
-
-#village {
-	text-transform: uppercase;
-}
-</style>
-
-<script type="text/javascript">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <script type="text/javascript">
 
 function populateDropdowns() {
 	var selectedState = document.getElementById("state");
     var districtDropdown = document.getElementById("district");
-    var talukDropdown = document.getElementById("talhuk"); // Fix this line
+    var talukDropdown = document.getElementById("taluk"); // Fix this line
     var hobliDropdown = document.getElementById("hobli");
     var villageDropdown = document.getElementById("village");
 
@@ -70,7 +39,7 @@ function populateDropdowns() {
     
     document.getElementById("district").addEventListener("change", function() {
         var selectedDistrict = this.value;
-        var talukDropdown = document.getElementById("talhuk");
+        var talukDropdown = document.getElementById("taluk");
         talukDropdown.innerHTML = ""; // Clear existing options 
         
         if (selectedDistrict === "SHIVAMOGGA") {
@@ -111,6 +80,7 @@ function populateDropdowns() {
             
         }
 
+
         else if (selectedDistrict === "BELGAUM") {
             populateDropdown(talukDropdown, [
                 "--SELECT TALHUK--",
@@ -118,13 +88,16 @@ function populateDropdowns() {
                 "KHANAPUR",
                 "RAIBAG",
                 "RAMDURG"
-           
+               
+               
+                
+                
             ]);
             
         }
     });
 
-    document.getElementById("talhuk").addEventListener("change", function() {
+    document.getElementById("taluk").addEventListener("change", function() {
     var selectedTaluk  = this.value;
     var hobliDropdown = document.getElementById("hobli");
     hobliDropdown.innerHTML =" ";
@@ -182,14 +155,16 @@ function populateDropdowns() {
              
             "BELLURU",
             "BINDIGANAVILLE"
-          
+            
+            
         ]);  
     }else if (selectedTaluk === "MYSORE") {
         populateDropdown(hobliDropdown, [
             "--SELECT HOBLI--",
             "KASABA",
-            "VARUNA"
-         
+            "VARUNA",
+           
+          
         ]);  
     }else if (selectedTaluk ===  "HEGGADADEVANAKOTE") {
         populateDropdown(hobliDropdown, [
@@ -227,7 +202,8 @@ function populateDropdowns() {
             "--SELECT HOBLI--",
             "K CHANDARAGI",
             "KATAKOLA",
-          
+           
+            
         ]);  
     }else if (selectedTaluk === "KHANAPUR") {
         populateDropdown(hobliDropdown, [
@@ -238,6 +214,7 @@ function populateDropdowns() {
     }
  
 });
+
 
 document.getElementById("hobli").addEventListener("change", function() {
     var selectedHobli  = this.value;
@@ -541,9 +518,13 @@ document.getElementById("hobli").addEventListener("change", function() {
           "ABANALLE",
 		  "AKRALLI",
 		  "AMBEVADI",
-		  "ANAGADI"			
+		  "ANAGADI",
+						
+						
         ]);  
     }
+
+
 });
 
 
@@ -559,365 +540,437 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 }
 
-</script>
-
+</script>  
+ 
 </head>
 <body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <h5 class="pt-1">LandRecord</h5>
+        </a>
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-primary"
-		style="height: 60px;">
-		<div class="container">
-			<a class="navbar-brand" id="land" href="#">LandRecords</a>
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="admin.jsp">LogOut</a>
+                </li>
+            </ul>
+            <!-- Left links -->
 
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" id="home"
-						style="color: white" href="Index.jsp">Home</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+            <!-- Right elements -->
+            <div class="d-flex align-items-center justify-content-start">
+                <!-- Icon -->
+                <a class="text-reset me-3" href="#">
+                    <i class="fas fa-shopping-cart text-white"></i>
+                </a>
+           
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+<div class="container">
+			
+			<br>
+			<h1 align="center">Land Records</h1> 
+			<br> 
+			<form class="search" action="check" method="post">
+		 		   <div  class="form-row">
+		 			<div class="col"> 
+		 				 
+	 						<label    class="form-lbl">State</label> 
+	 					 	<select    class="form-control" id="state" name="state"  onchange="populateDropdowns()" required>
+                            <option value="">SELECT A STATE</option>
+                            <option value="KARNATAKA">KARNATAKA</option>
+	 					 		 
+	 					 	</select>
+ 					 	 
+		 			</div> 
+		 			<div class="col"> 
+		 				 
+	 						<label for="district"    class="form-lbl">District</label> 
+	 					 	<select  id="district" class="form-control" name="district"  required  >
+	 					 		 
+	 					 		 <option value="">SELECT A DISTRICT</option>
+	 					 	     	<option value="SHIVAMOGGA">SHIVAMOGGA</option>
+                           <option value="MANDYA">MANDYA</option>
+                            <option value="MYSORE">MYSORE</option>
+                           <option value="BELGAUM">BELGAUM</option>
+                          
+	 					 	</select>
+ 					 	 
+		 			</div> 
+		 			<div class="col"> 
+		 				 
+	 						<label  for="taluk"    class="form-lbl">Taluk</label> 
+	 					 	<select id="taluk" class="form-control" name="taluk" required>
+	 					 		 <option value="">SELECT A TALUK</option>
+	 				  	 	 	<option value="HOSANAGARA">HOSANAGARA</option>
+                            <option value="THIRTHAHALLI">THIRTHAHALLI</option>
+                            <option value="SAGARA">SAGARA</option>
+                            <option value="SORABA">SORABA</option>
+                            
+                            
+                               
+                               <option value="KRPET">KRPET</option>
+                              <option value="MADDUR">MADDUR</option>
+                               <option value="PANDAVAPURA">PANDAVAPURA</option>
+                               <option value="NAGAMANGALA">NAGAMANGALA</option>
+                               
+                               
+                              <option value="mysore">MYSORE</option>
+						     <option value="HeggadaDevanakote">HEGGADADEVANAKOTE</option>
+					      	 <option value="Hunsur">HUNSUR</option>
+						    <option value="Nanjangud">NANJANGUD</option>
+						    
+						    
+						    <option value="Raibag">RAIBAG</option>
+						<option value="gokak">GOKAK</option>
+						<option value="ramdurg">RAMDURG</option>
+						<option value="khanapur">KHANAPUR</option>
+                            
+	 					 		
+	 					 		  
+	 					 		
+	 					 	</select>
+ 					 	  
+		 			</div> 
+		 			 
+           <div class="col"> 
+		 				 
+	 						<label class="form-lbl" for="hobli"> Hobli</label> 
+	 					 	<select class="form-control" name="hobli" id="hobli" required>
+	 					 		<option value="">Select a HOBLI</option>
+	 					 		<option value="HUNCHA">HUNCHA</option>
+                            <option value="NAGARA">NAGARA</option>
+                            
+                            <option value="AGRAHARA">AGRAHARA</option>
+                            <option value="AGUMBE">AGUMBE</option>
+                            
+                            
+                            <option value="ANANDAPURA">ANANDAPURA</option>
+                            <option value="AVINAHALLI">AVINAHALLI</option>
+                            
+                            <option value="JADE">JADE</option>
+                            <option value="ULAVI">ULAVI</option>
+                            
+                            
+                           <!-- MANDYA:KRPET AND MADDUR  -->
+                           
+                            <option value="AKKIHEBBAL">AKKIHEBBAL</option>
+                             <option value="BUKINAKERE">BUKINAKERE</option>
+                               
+                             <option value="ATAGURU HOBLI">ATAGURU HOBLI</option>
+                            <option value="KOPPA HOBALI">KOPPA HOBALI</option>
+                            
+                            
+                            <!-- mandya:nagamangala -->
+                       <option value="Belluru">BELLURU</option>
+                       <option value="Bindiganaville">BINDIGANAVILLE</option>
+                       
+                  <!-- mandya:pandavapura-->
+                     <option value="chinakurali">CHINAKURALI</option>
+                      <option value="melukote">MELUKOTE</option>
+                      
+                      <!-- Mysuru -->
+                      <option value="Kasaba">KASABA</option>
+						<option value="Varuna">VARUNA</option>
+						
+						<!-- Heggada Devana kote -->
+						<option value="Antarasante">ANTARASANTE</option>
+						<option value="Hampapura">HAMPAPURA</option>
+						
+						<!-- Hunsur -->
+						<option value="Bilikere">BILIKERE</option>
+						<option value="Gavadagere">GAVADAGERE</option>
+						
+						<!-- Nanjangud -->
+						<option value="Chikkayyanachatra">CHIKKAYYANACHATRA</option>
+						<option value="Hullahalli">HULLAHALLI</option>
+						
+						
+						<option value="kudachi">KUDACHI</option>
+						<option value="raybaga">RAYBAG</option>
 
-	<br>
-	<h1 align="center">Land Records</h1>
-	<h6 style="color: green;">${Saved}</h6>
-	<br>
-	<form class="form" action="search" method="get">
-		<div class="row">
+						<option value="gokak">GOKAK</option>
+						<option value="kowjalagi">KOWJALAGI</option>
 
-			<div class="col-md-3">
-				<fieldset class="form-group">
-					<label style="text-transform: capitalize" class="form-lbl">State</label> <select class="form-control"
-						name="state">
-						<option selected>SELECT STATE</option>
-						<option value="KARNATAKA">KARNATAKA</option>
-					</select>
-				</fieldset>
-			</div>
+						<option value="K Chandaragi">K CHANDARAGI</option>
+						<option value="katakola">KATAKOLA</option>
 
-			<div class="col-md-3">
-				<fieldset class="form-group">
-					<label class="form-lbl">District</label> <select
-						class="form-control" name="district" id="district">
-						<option selected>Select District</option>
-						<option value="Belgaum">Belgaum</option>
-						<option value="Mysore">Mysore</option>
-						<option value="Mandya">Mandya</option>
-						<option value="Shivamogga">Shivamogga</option>
-					</select>
-				</fieldset>
-			</div>
-			<div class="col-md-3">
-				<fieldset class="form-group">
-					<label class="form-lbl">Taluk</label> <select class="form-control"
-						name="taluk" id="taluk" required>
-						<option selected>Select Taluk</option>
-						<option value="Raibag">Raibag</option>
-						<option value="Gokak">Gokak</option>
-						<option value="Ramdurg">Ramdurg</option>
-						<option value="Khanapur">Khanapur</option>
-
-						<option value="Mysore">Mysore</option>
-						<option value="Heggada Devana kote">Heggada Devana kote</option>
-						<option value="Hunsur">Hunsur</option>
-						<option value="Nanjangudi">Nanjangudi</option>
-
-						<!--Mandya-->
-						<option value="Maddur">Maddur</option>
-						<option value="Krishnarajpet ">Krishnarajpet</option>
-						<option value="Nagamangala">Nagamangala</option>
-						<option value="Pandavapura">Pandavapura</option>
-
-						<option value="Hosanagara">Hosanagara</option>
-						<option value="Thirthahalli">Thirthahalli</option>
-						<option value="Sagara">Sagara</option>
-						<option value="Soraba">Soraba</option>
-					</select>
-				</fieldset>
-			</div>
-
-			<div class="col-md-3">
-				<fieldset class="form-group">
-					<label class="form-lbl">Hobli</label> <select
-						class="form-control select2" name="hobli" id="hobli" required>
-						<option selected>Select Hobli</option>
-						<!-- belgaum -->
-						<option value="Kudachi">Kudachi</option>
-						<option value="Raybaga">Raybaga</option>
-
-						<option value="Gokak">Gokak</option>
-						<option value="Kowjalagi">Kowjalagi</option>
-
-						<option value="K Chandaragi">K Chandaragi</option>
-						<option value="Katakola">Katakola</option>
-
-						<option value="Beedi">Beedi</option>
-						<option value="Gunji">Gunji</option>
-
-						<!-- Mysore -->
-						<option value="Kasaba">Kasaba</option>
-						<option value="Varuna">Varuna</option>
-
-						<!-- Mysore(Heggada Devana kote) -->
-						<option value="Antarasante">Antarasante</option>
-						<option value="Hampapura">Hampapura</option>
-
-						<!-- Mysore(Hunsur) -->
-						<option value="Bilikere">Bilikere</option>
-						<option value="Gavadagere">Gavadagere</option>
-
-						<!-- Mysore(Nanjangud) -->
-						<option value="Chikkayyanachatra">Chikkayyanachatra</option>
-						<option value="Hullahalli">Hullahalli</option>
-
-						<!-- mandya:nagamangala -->
-						<option value="Belluru">Belluru</option>
-						<option value="Bindiganaville">Bindiganaville</option>
-
-						<!-- mandya:pandavapura-->
-						<option value="Chinakurali">Chinakurali</option>
-						<option value="Melukote">Melukote</option>
-
-						<!-- MANDYA:KRPET AND MADDUR  -->
-
-						<option value="Akkihebbal">Akkihebbal</option>
-						<option value="Bukinakere">Bukinakere</option>
-
-						<option value="Ataguru Hobli">Ataguru Hobli</option>
-						<option value="Koppa Hobli">Koppa Hobli</option>
-
-						<!-- Shivmoga -->
-						<option value="Huncha">Huncha</option>
-						<option value="Nagara">Nagara</option>
-
-						<option value="Agrahara">Agrahara</option>
-						<option value="Agumbe">Agumbe</option>
-
-
-						<option value="Anandapura">Anandapura</option>
-						<option value="Avinahalli">Avinahalli</option>
-
-						<option value="Jade">Jade</option>
-						<option value="Ulavi">Ulavi</option>
-
-
-					</select>
-				</fieldset>
-			</div>
-			<div class="col-md-3">
-				<fieldset class="form-group">
-					<label class="form-lbl">Village</label> <select
-						class="form-control select2" name="village" id="village" required>
-						<option selected>Select Village</option>
-
-						<!-- kudachi -->
-						<option value="Mugalakhoda">Mugalakhoda</option>
-						<option value="Neelaji">Neelaji</option>
-						<option value="Moraba">Moraba</option>
-						<option value="Kudachi">Kudachi</option>
-
+						<option value="Beedi">BEEDI</option>
+						<option value="Gunji">GUNJI</option>
+                            
+                  
+	 					 	</select>
+ 					 	  
+		 			</div> 
+		 			<div class="col"> 
+		 				 
+	 						<label class="form-lbl" for="village">Village</label> 
+	 					 	<select class="form-control select2" name="village" id="village" required>
+	 					 		<option selected>Open this select menu</option>
+	 					 		   <option value="">SELECT A VILLAGE</option>
+                            <option value="AMRUTA">AMRUTA</option>
+                            <option value="ANEGADDE">ANEGADDE</option>
+                             <option value="BILLODI">BILLODI</option>
+                            <option value="BORIKOPPA">BORIKOPPA</option>
+                            
+                            
+                             <option value="ANDAGADUDURU">ANDAGADUDURU</option>
+                            <option value="BAISE">BAISE</option>
+                             <option value="KABALE">KABALE</option>
+                            <option value="KADIGERI">KADIGERI</option>
+                            
+                            <option value="AGALABAGILU">AGALABAGILU</option>
+                            <option value="AGASADI">AGASADI</option>
+                             <option value="ALURU">ALURU</option>
+                            <option value="ARALASURALI">ARALASURALI</option>
+                            
+                             <option value="AREHALLI">AREHALLI</option>
+                            <option value="BALEHALLI">BALEHALLI</option>
+                             <option value="CHAKKODABILU">CHAKKODABILU</option>
+                            <option value="CHANGARA">CHANGARA</option>
+                            
+                            <option value="ACHAPURA">ACHAPURA</option>
+                            <option value="ADURU">ADURU</option>
+                             <option value="ATAVDI">ATAVDI</option>
+                            <option value="BALLIBYELU">BALLIBYELU</option>
+                            
+                            <option value="AMBARAGODLU">AMBARAGODLU</option>
+                            <option value="ARALEEKOPPA">ARALEEKOPPA</option>
+                             <option value="BESURU">BESURU</option>
+                            <option value="DEVASA">DEVASA</option>
+                            
+                             <option value="ARETALAGADDE">ARETALAGADDE</option>
+                            <option value="BANKSANA">BANKSANA</option>
+                             <option value="BANKAVALLI">BANKAVALLI</option>
+                            <option value="BILAGALI">BILAGALI</option>
+                            
+                             <option value="AVALAGODU">AVALAGODU</option>
+                            <option value="BALAGODU">BALAGODU</option>
+                             <option value="BARIGE">BARIGE</option>
+                            <option value="BHADRAPURA">BHADRAPURA</option>
+                            
+                            <!-- MANDTA -->
+                            
+                            
+                             <option value="AIPANAHALLI">AIPANAHALLI</option>
+                            <option value="AKKIHEBBAL">AKKIHEBBAL</option>
+                             <option value="ALAMBADI">ALAMBADI</option>
+                            <option value="ALENAHALLI">ALENAHALLI</option>
+                            
+                            <option value="AGASARAHALLI">AGASARAHALLI</option>
+                            <option value="AICHANAHALLI">AICHANAHALLI</option>
+                             <option value="ARALAKUPPE">ARALAKUPPE</option>
+                            <option value="ATTUPPE">ATTUPPE</option>
+                            
+                            
+                             <option value="ALANSHETTIHALLI">ALANSHETTIHALLI</option>
+                            <option value="ANKANATHAPURA">ANKANATHAPURA</option>   
+                             <option value="ATAGURU">ATAGURU</option>
+                            <option value="BYALADAKERE">BYALADAKERE</option>
+                            
+                            <option value="BEKKALALE">BEKKALALE</option>
+                            <option value="BOLARE">BOLARE</option>
+                             <option value="HOSAGALI">HOSAGALI</option>
+                            <option value="KIRANGURU">KIRANGURU</option>
+                            
+                            
+                             <option value="Adakatahalli">ADAKATAHALLI</option>
+                                   <option value="Agachahalli"> ADACHAHALLI</option>
+                                   <option value="Ambalajeerahalli"> AMBALAJEERAHALLI</option>
+                                   <option value="Anakanahalli">AMAKANAHALLI</option>
+                                     <!-- mandya :Bindiganaville -->
+                                     <option value="A Chennapura">A CHENNAPURA</option>
+                                   <option value="A Nagattihalli">A NAGATTIHALLI</option>
+                                   <option value="Addihalli">ADDIHALLI</option>
+                                   <option value="Aleesandra"> ALEESANDRA</option>
+                                   
+                                   <!-- mandya :chinakurali -->
+                                   <option value="Alpahalli">ALPAHALLI</option>
+                                   <option value="Antanahalli"> ANTANAHALLI</option>
+                                   <option value="Aralakuppe">ARALAKUPPE</option>
+                                   <option value="Aralakuppenala">ARALAKUPPENALA</option>
+                                   
+                                   <!-- mandya :mekote -->
+                                   <option value="Amruthi"> AMRUTHI</option>
+                                   <option value="Anunahalli">  ANUNAHALLI</option>
+                                   <option value="anuvallu">ANUVALLU</option>
+                                   <option value="Arakanakere">ARAKANAKERE</option>
+                                   
+                                   
+                                   <!-- Mysore(kasaba)  -->
+						<option value="Bogadi">BOGADI</option>
+						<option value="Goruru">GORURU</option>
+						<option value="Kesare">KESARE</option>
+						<option value="Satagalli">SATAGALLI</option>
+						
+						<!-- Mysore(varuna)  -->
+						<option value="Dandikere">DANDIKERE</option>
+						<option value="Hongate">HONGATE</option>
+						<option value="Marashe">MARASHE</option>
+						<option value="Yadakola">YADAKOLA</option>
+						
+						<!-- Antarasante -->
+						<option value="Anagatti">ANAGATTI</option>
+						<option value="Anemala">ANEMALA</option>
+						<option value="Hosuru">HOSURU</option>
+						<option value="Jiyara">JIYARA</option>
+						
+						<!-- Hampapura -->
+						<option value="Bettahalli">BETTAHALLI</option>
+						<option value="Devalapura">DEVALAPURA</option>
+						<option value="Karigala">KARIGALA</option>
+						<option value="Pura">PURA</option>
+						
+						<!-- Bilikere -->
+						<option value="Asvalu">ASVALU</option>
+						<option value="Dallalu">DALLALU</option>
+						<option value="Tippuru">TIPPURU</option>
+						<option value="Mudlapura">MUDLAPURA</option>
+						
+						<!-- Gavadagere -->
+						<option value="Agrahara">AGRAHARA</option>
+						<option value="Attiguppe">ATTIGUPPE</option>
+						<option value="Belatturu">BELATTURU</option>
+						<option value="Harave">HARAVE</option>
+						
+						<!-- Chikkayyanachatra -->
+						<option value="Adakanahalli">ADAKANAHALLI</option>
+						<option value="Alatturu">ALATTURU</option>
+						<option value="Basavanapura">BASAVANAPURA</option>
+						<option value="Bidaragudu">BIDARAGUDU</option>
+						
+						<!-- Hullahalli -->
+						<option value="Akala">AKALA</option>
+						<option value="Amakalli">AMAKALLI</option>
+						<option value="Ambale">AMBALE</option>
+						<option value="Ariyuru">ARIYURU</option>
+						
+						
+						
+						<option value="mugalakhoda">MUGALAKHODA</option>
+						<option value="neelaji">NEELAJI</option>
+						<option value="moraba">MORABA</option>
+						<option value="kudachi">KUDACHI</option>
+						
 						<!-- raybaga  -->
-						<option value="Bavachi">Bavachi</option>
-						<option value="Chinchali">Chinchali</option>
-						<option value="Devanakatti">Devanakatti</option>
-						<option value="Jodatti">Jodatti</option>
+						<option value="bavachi">BAVACHI</option>
+						<option value="chinchali">CHINCHALI</option>
+						<option value="devanakatti">DEVANAKATTI</option>
+						<option value="jodatti">JODATTI</option>
 
 						<!-- gokak  -->
-						<option value="Balobal">Balobal</option>
-						<option value="Budihala">Budihala</option>
-						<option value="Dandapur">Dandapur</option>
-						<option value="Gokaka">Gokaka</option>
+						<option value="balobal">BALOBAL</option>
+						<option value="budihala">BUDIHALA</option>
+						<option value="dandapur">DANDAPUR</option>
+						<option value="gokaka">GOKAKA</option>
 
 						<!-- kowjalagi -->
-						<option value="Adibatti">Adibatti</option>
-						<option value="Betageri">Betageri</option>
-						<option value="Kandrattti">Kandrattti</option>
-						<option value="Mannikeri">Mannikeri</option>
+						<option value="adibatti">ADIBATTI</option>
+						<option value="betageri">BETAGERI</option>
+						<option value="kandrattti">KANDRATTI</option>
+						<option value="mannikeri">MANNIKERI</option>
 						<!-- K Chandaragi -->
 
-						<option value="Beedaki">Beedaki</option>
-						<option value="Bhagojikoppa">Bhagojikoppa</option>
-						<option value="Bijagupi">Bijagupi</option>
-						<option value="Budanura">Budanura</option>
-
+						<option value="beedaki">BEEDAKI</option>
+						<option value="bhagojikoppa">BHAGOJIKOPPA</option>
+						<option value="bijagupi">BIJAGUPI</option>
+						<option value="budanura">BUDANURA</option>
+						
 						<!-- katakola -->
-						<option value="Aribenchi">Aribenchi</option>
-						<option value="Bannura">Bannura</option>
-						<option value="Bochabala">Bochabala</option>
-						<option value="Budanura">Budanura</option>
-
+						<option value="Aribenchi">ARIBENCHI</option>
+						<option value="bannura">BANNURA</option>
+						<option value="bochabala">BOCHABALA</option>
+						<option value="CHILAMURA">CHILAMURA</option>
+						
 						<!-- beedi -->
-						<option value="Adi">Adi</option>
-						<option value="Balagunda">Balagunda</option>
-						<option value="Beedi">Beedi</option>
-						<option value="Bhuranaki">Bhuranaki</option>
-
+						<option value="adi">ADI</option>
+						<option value="balagunda">BALAGUNDA</option>
+						<option value="beedi">BEEDI</option>
+						<option value="bhuranaki">BHURANAKI</option>
+						
 						<!-- Gunji -->
-						<option value="Abanalle">Abanalle</option>
-						<option value="Akralli">Akralli</option>
-						<option value="Ambevadi">Ambevadi</option>
-						<option value="Anagadi">Anagadi</option>
-
-						<!-- Mysore(kasaba)  -->
-						<option value="Bogadi">Bogadi</option>
-						<option value="Goruru">Goruru</option>
-						<option value="Kesare">Kesare</option>
-						<option value="Satagalli">Satagalli</option>
-
-						<!-- Mysore(varuna)  -->
-						<option value="Dandikere">Dandikere</option>
-						<option value="Hongate">Hongate</option>
-						<option value="Marashe">Marashe</option>
-						<option value="Yadakola">Yadakola</option>
-
-						<!-- Antarasante -->
-						<option value="Anagatti">Anagatti</option>
-						<option value="Anemala">Anemala</option>
-						<option value="Hosuru">Hosuru</option>
-						<option value="Jiyara">Jiyara</option>
-
-						<!-- Hampapura -->
-						<option value="Bettahalli">Bettahalli</option>
-						<option value="Devalapura">Devalapura</option>
-						<option value="Karigala">Karigala</option>
-						<option value="Pura">Pura</option>
-
-						<!-- Bilikere -->
-						<option value="Asvalu">Asvalu</option>
-						<option value="Dallalu">Dallalu</option>
-						<option value="Tippuru">Tippuru</option>
-						<option value="Mudlapura">Mudlapura</option>
-
-						<!-- Gavadagere -->
-						<option value="Agrahara">Agrahara</option>
-						<option value="Attiguppe">Attiguppe</option>
-						<option value="Belatturu">Belatturu</option>
-						<option value="Harave">Harave</option>
-
-						<!-- Chikkayyanachatra -->
-						<option value="Adakanahalli">Adakanahalli</option>
-						<option value="Alatturu">Alatturu</option>
-						<option value="Basavanapura">Basavanapura</option>
-						<option value="Bidaragudu">Bidaragudu</option>
-
-						<!-- Hullahalli -->
-						<option value="Akala">Akala</option>
-						<option value="Amakalli">Amakalli</option>
-						<option value="Ambale">Ambale</option>
-						<option value="Ariyuru">Ariyuru</option>
-
-						<!-- mandya :belluru -->
-						<option value="Adakatahalli">Adakatahalli</option>
-						<option value="Agachahalli">Agachahalli</option>
-						<option value="Ambalajeerahalli">Ambalajeerahalli</option>
-						<option value="Anakanahalli">Anakanahalli</option>
-
-						<!-- mandya :Bindiganaville -->
-						<option value="A Chennapura">A Chennapura</option>
-						<option value="A Nagattihalli">A Nagattihalli</option>
-						<option value="Addihalli">Addihalli</option>
-						<option value="Addihalli">Addihalli</option>
-
-						<!-- mandya :chinakurali -->
-						<option value="Alpahalli">Alpahalli</option>
-						<option value="Antanahalli">Antanahalli</option>
-						<option value="Aralakuppe">Aralakuppe</option>
-						<option value="Aralakuppenala">Aralakuppenala</option>
-
-						<!-- mandya :mekote -->
-						<option value="Amruthi">Amruthi</option>
-						<option value="Anunahalli">Anunahalli</option>
-						<option value="anuvallu">anuvallu</option>
-						<option value="Arakanakere">Arakanakere</option>
-
-						<option value="AIPANAHALLI">AIPANAHALLI</option>
-						<option value="AKKIHEBBAL">AKKIHEBBAL</option>
-						<option value="ALAMBADI">ALAMBADI</option>
-						<option value="ALENAHALLI">ALENAHALLI</option>
-
-						<option value="AGASARAHALLI">AGASARAHALLI</option>
-						<option value="AICHANAHALLI">AICHANAHALLI</option>
-						<option value="ARALAKUPPE">ARALAKUPPE</option>
-						<option value="ATTUPPE">ATTUPPE</option>
-
-
-						<option value="ALANSHETTIHALLI">ALANSHETTIHALLI</option>
-						<option value="ANKANATHAPURA">ANKANATHAPURA</option>
-						<option value="ATAGURU">ATAGURU</option>
-						<option value="BYALADAKERE">BYALADAKERE</option>
-
-						<option value="BEKKALALE">BEKKALALE</option>
-						<option value="BOLARE">BOLARE</option>
-						<option value="HOSAGALI">HOSAGALI</option>
-						<option value="KIRANGURU">KIRANGURU</option>
-
-						<!-- Shivmoga -->
-						<option value="AMRUTA">AMRUTA</option>
-						<option value="ANEGADDA">ANEGADDA</option>
-						<option value="BILLODI">BILLODI</option>
-						<option value="BORIKOPPA">BORIKOPPA</option>
-
-
-						<option value="ANDAGADUDURU">ANDAGADUDURU</option>
-						<option value="BAISE">BAISE</option>
-						<option value="KABALE">KABALE</option>
-						<option value="KADIGERI">KADIGERI</option>
-
-						<option value="AGALABAGILU">AGALABAGILU</option>
-						<option value="AGASADI">AGASADI</option>
-						<option value="ALURU">ALURU</option>
-						<option value="ARALASURALI">ARALASURALI</option>
-
-						<option value="AREHALLI">AREHALLI</option>
-						<option value="BALEHALLI">BALEHALLI</option>
-						<option value="CHAKKODABILU">CHAKKODABILU</option>
-						<option value="CHANGARA">CHANGARA</option>
-
-						<option value="ACHAPURA">ACHAPURA</option>
-						<option value="ADURU">ADURU</option>
-						<option value="ATAVDI">ATAVDI</option>
-						<option value="BALLIBYELU">BALLIBYELU</option>
-
-						<option value="AMBARAGODLU">AMBARAGODLU</option>
-						<option value="ARALEEKOPPA">ARALEEKOPPA</option>
-						<option value="BESURU">BESURU</option>
-						<option value="DEVASA">DEVASA</option>
-
-						<option value="ARETALAGADDE">ARETALAGADDE</option>
-						<option value="BANKSANA">BANKSANA</option>
-						<option value="BANKAVALLI">BANKAVALLI</option>
-						<option value="BILAGALI">BILAGALI</option>
-
-						<option value="AVALAGODU">AVALAGODU</option>
-						<option value="BALAGODU">BALAGODU</option>
-						<option value="BARIGE">BARIGE</option>
-						<option value="BHADRAPURA">BHADRAPURA</option>
-					</select>
-				</fieldset>
+						<option value="Abanalle">ABANALLE</option>
+						<option value="Akralli">AKRALLI</option>
+						<option value="Ambevadi">AMBEVADI</option>
+						<option value="Anagadi">ANAGADI</option>
+                            
+	 					 </select>
+ 					 	 
+		 			</div>
+		 			
+		 			&nbsp;&nbsp;
+		 			 <button type="submit" class="btn btn-primary" style="size: 2 px;" >GO</button>
+		 			</div> 
+		 		 	 
+			</form>
 			</div>
-
+		
 			<br>
-			<div class="col-md-3">
-				<fieldset class="form-group">
-				   <label class="form-lbl"> . </label>
-					<button type="submit" class="form-control btn btn-primary">Go</button>
-				</fieldset>
-			</div>
-		</div>
+			  <table class="table">
 
-	</form>
-	<br>
-	<form action="">
-	
-	
-	</form>
+  <thead class="table-dark">
+  <tr>
+       
+      <th scope="col">Owner Name</th>
+      <th scope="col">MobileNo</th>
+      <th scope="col">Aadhar No</th>
+      <th scope="col">Hissa No</th>
+      <th scope="col">Survey No</th>
+      <th scope="col">Year</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+      
+    </tr></thead>
+  
+  <tbody>     
+  <c:forEach var="list" items="${found}">
+<tr>
+ 
+<td>${list.ownerName}</td>
+<td>${list.mobileNumber}</td>
+<td>${list.aadharNumber}</td>
+<td>${list.hissaNumber}</td>
+<td>${list.surveyNumber}</td>
+<td>${list.year}</td>
+<td><a class="btn btn-primary" href="Edit.jsp" role="button">Edit</a></td>
+<td><a class="btn btn-primary" href="Delete.jsp" role="button">Delete</a></td>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</tr>
+
+</c:forEach>
+  </tbody>
+  
+  </tbody>
+</table>
+<h5 style="color: red">${NotFound}</h5>
+			
+		<div style="align-content: center; "> 
+		 <a class="btn btn-primary" href="Edit.jsp" role="button"> Edit Records</a>
+       &nbsp; &nbsp;
+      
+      <a class="btn btn-primary" href="Delete.jsp" role="button"> Delete Records</a>
+		 
+</div>
 
 	<div style="height: 255px"></div>
 
