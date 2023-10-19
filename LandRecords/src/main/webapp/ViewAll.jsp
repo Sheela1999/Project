@@ -52,7 +52,7 @@
 					<li class="nav-item"><a class="nav-link" href="admin.jsp">LogOut</a>
 					</li>
 					<li class="nav-item">
-						<form action="read" method="post">
+						<form action="read" method="get">
 							<button type="submit" class="btn btn-primary">View
 								Records</button>
 						</form>
@@ -72,9 +72,7 @@
 		<!-- Container wrapper -->
 	</nav>
 	<!-- Navbar -->
-	<form action="read" method="post">
-		<button type="submit" class="btn btn-primary">View Records</button>
-	</form>
+	<br>
 
 	<table class="table">
 
@@ -117,7 +115,7 @@
 
 		</tbody>
 	</table>
-	<button type="submit">edit</button>
+		<h5 style="color: red">${Reading}</h5>
 
 	<div style="height: 255px"></div>
 

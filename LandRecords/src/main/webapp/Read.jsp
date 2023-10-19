@@ -561,9 +561,6 @@ document.getElementById("hobli").addEventListener("change", function() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
-                </li>
                 
                 <li class="nav-item">
                     <a class="nav-link" href="admin.jsp">LogOut</a>
@@ -726,7 +723,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 		 				 
 	 						<label class="form-lbl" for="village">Village</label> 
 	 					 	<select class="form-control select2" name="village" id="village" required>
-	 					 		<option selected>Open this select menu</option>
 	 					 		   <option value="">SELECT A VILLAGE</option>
                             <option value="AMRUTA">AMRUTA</option>
                             <option value="ANEGADDE">ANEGADDE</option>
@@ -932,7 +928,7 @@ document.getElementById("hobli").addEventListener("change", function() {
   <tr>
        
       <th scope="col">Owner Name</th>
-      <th scope="col">MobileNo</th>
+      <th scope="col">Mobile No</th>
       <th scope="col">Aadhar No</th>
       <th scope="col">Hissa No</th>
       <th scope="col">Survey No</th>
@@ -952,8 +948,15 @@ document.getElementById("hobli").addEventListener("change", function() {
 <td>${list.hissaNumber}</td>
 <td>${list.surveyNumber}</td>
 <td>${list.year}</td>
-<td><a class="btn btn-primary" href="Edit.jsp" role="button">Edit</a></td>
-<td><a class="btn btn-primary" href="Delete.jsp" role="button">Delete</a></td>
+<td><a class="btn btn-primary" href="updateRecords?hissaNumber=${list.hissaNumber}&surveyNumber=${list.surveyNumber}" role="button"> Edit</a>
+ </td>
+<td> 
+			<form action="remove" method="post">
+			<input type="hidden" name="hissaNumber" value="${list.hissaNumber}">
+			<input type="hidden" name="surveyNumber" value="${list.surveyNumber}">
+			<button type="submit" class="btn btn-primary" >Delete</button>
+			</form>
+			 </td>
 
 </tr>
 
@@ -963,14 +966,7 @@ document.getElementById("hobli").addEventListener("change", function() {
   </tbody>
 </table>
 <h5 style="color: red">${NotFound}</h5>
-			
-		<div style="align-content: center; "> 
-		 <a class="btn btn-primary" href="Edit.jsp" role="button"> Edit Records</a>
-       &nbsp; &nbsp;
-      
-      <a class="btn btn-primary" href="Delete.jsp" role="button"> Delete Records</a>
-		 
-</div>
+<h5 style="color: green">${delete}</h5>
 
 	<div style="height: 255px"></div>
 

@@ -20,6 +20,8 @@ public interface LandRecordService {
 	
 	public LandRecordsDto ifExists(Integer hissaNumber, Integer surveyNumber, Model model);
 	
-	public boolean updateStatus(Boolean status, Integer hissaNumber, Integer surveyNumber);
+	public boolean updateStatus(Integer hissaNumber, Integer surveyNumber);
+	
+	public LandRecordsDto editRecords(Integer hissaNumber, Integer surveyNumber, Model model);
 	
 }

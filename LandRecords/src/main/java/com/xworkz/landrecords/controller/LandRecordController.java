@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,41 +43,55 @@ public class LandRecordController {
 			model.addAttribute("found", found);
 			return "Read";
 		} else {
-			model.addAttribute("NotFound", "Searching records not found");
+			model.addAttribute("NotFound", "Searching records are not found");
 			return "Read";
 		}
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	@PostMapping(value = "/edit")
 	public String editRecords(@RequestParam String ownerName, @RequestParam Long mobileNumber,
-			@RequestParam String aadharNumber, @RequestParam Integer hissaNumber, @RequestParam Integer surveyNumber,
-			Model model) {
+			@RequestParam String aadharNumber, @RequestParam("hissaNumber") Integer hissaNumber,
+			@RequestParam("surveyNumber") Integer surveyNumber, Model model) {
 		boolean edit = service.updateBySurveyNumber(ownerName, mobileNumber, aadharNumber, hissaNumber, surveyNumber,
 				model);
 		if (edit) {
 			model.addAttribute("Edited", "updated in records");
-			return "Edit";
+			return "Read";
 		}
 		return "Edit";
 	}
 
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String deleteRecords(@RequestParam  Boolean status, @RequestParam Integer hissaNumber, @RequestParam Integer surveyNumber, Model model) {
-		boolean statusUpdated = service.updateStatus(status, hissaNumber, surveyNumber);
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String deleteRecords(@RequestParam("hissaNumber") Integer hissaNumber, @RequestParam("surveyNumber") Integer surveyNumber, Model model) {
+		boolean statusUpdated = service.updateStatus(hissaNumber, surveyNumber);
 		System.out.println(statusUpdated);
 		boolean remove = service.deleteRecords(hissaNumber, surveyNumber, model);
 		if (remove) {
 			model.addAttribute("delete", "records deleted sucessfully");
+			return "Read";
 		}
-		return "Delete";
+		return "Read";
 	}
 
-	@RequestMapping(value = "/read", method = RequestMethod.POST)
+	@RequestMapping(value = "/readAll", method = RequestMethod.GET)
 	public String ReadAll(LandRecordsDto dto, Model model) {
 		List<LandRecordsDto> readData = service.readAll();
+		if(readData != null) {
 		model.addAttribute("readList", readData);
-		System.out.println(readData);
+		System.out.println("Reading All the records");
 		return "ViewAll";
+		}else {
+			model.addAttribute("Reading", "No Records Found");
+			return "ViewAll";
+		}
+	}
+
+	@GetMapping(value = "/updateRecords")
+	public String edit(Model model, @RequestParam("hissaNumber") Integer hissaNumber,
+			@RequestParam("surveyNumber") Integer surveyNumber) {
+		LandRecordsDto edited = service.editRecords(hissaNumber, surveyNumber, model);
+		System.out.println(edited);
+		return "Edit";
 	}
 
 }

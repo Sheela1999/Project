@@ -68,8 +68,8 @@ public class LandRecordServiceImpl implements LandRecordService {
 
 	@Override
 	public List<LandRecordsDto> findByHobliAndVillage(String hobli, String village, Model model) {
-		if (hobli != null && hobli.isEmpty()) {
-			if (village != null && village.isEmpty()) {
+		if (hobli != null && !hobli.isEmpty()) {
+			if (village != null && !village.isEmpty()) {
 				try {
 					List<LandRecordsDto> dtos = repo.findByHobliAndVillage(hobli, village);
 					return dtos;
@@ -121,7 +121,7 @@ public class LandRecordServiceImpl implements LandRecordService {
 	public boolean deleteRecords(Integer hissaNumber, Integer surveyNumber, Model model) {
 		if (hissaNumber > 0 && hissaNumber < 25) {
 			if (surveyNumber > 0 && surveyNumber < 150) {
-				return repo.deleteRecords(hissaNumber, surveyNumber);
+				return repo.updateStatus(hissaNumber, surveyNumber);
 			}
 			model.addAttribute("Errorhissa", " check hissa number");
 			return false;
@@ -149,19 +149,30 @@ public class LandRecordServiceImpl implements LandRecordService {
 		
 	}
 		
+	@Override
+	public LandRecordsDto editRecords(Integer hissaNumber, Integer surveyNumber, Model model) {
+		
+		try {
+			LandRecordsDto list =	repo.ifExists(hissaNumber, surveyNumber);
+			if(list!=null) {
+				model.addAttribute("Exist", "Already Exist");
+				return list;
+			}
 			
-				
-					
-					
-					
-					
-					
+			
+		} catch (Exception e) {
+			System.out.println("Data not present");
+			return null;
+		}
+		return null;
+		
+	}				
 					
 	@Override
-	public boolean updateStatus(Boolean status, Integer hissaNumber, Integer surveyNumber) {
+	public boolean updateStatus(Integer hissaNumber, Integer surveyNumber) {
 		if (hissaNumber > 0 && hissaNumber < 25) {
 			if (surveyNumber > 0 && surveyNumber < 150) {
-				repo.updateStatus(status, hissaNumber, surveyNumber);
+				repo.updateStatus(hissaNumber, surveyNumber);
 				return true;
 			}
 			System.out.println("Survey is not valid");

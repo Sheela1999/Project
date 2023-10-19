@@ -11,27 +11,25 @@
 	rel="stylesheet"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-	
-	<style type="text/css">
-	
-	#land {
+
+<style type="text/css">
+#land {
 	color: white;
-	}
-	
-	#adminName {
+}
+
+#adminName {
 	color: white;
 	padding-left: 1000px;
-	}
-	
-	#logout {
+}
+
+#logout {
 	color: white;
-	}
-	button{
-	 margin-left: 500px;
-	
-	}
-	
-	</style>
+}
+
+button {
+	margin-left: 500px;
+}
+</style>
 
 </head>
 <body>
@@ -51,13 +49,23 @@
 			</ul>
 		</nav>
 	</header>
-	
+
 	<div style="height: 100px"></div>
 
-	<a href="Save.jsp"><button class="btn btn-primary" type="submit">AddRecords</button></a><a href="Read.jsp"><button class="btn btn-primary" type="submit">ViewRecords</button></a>
-	
-	
-	
+	<a href="Save.jsp"><button class="btn btn-primary" type="submit">AddRecords</button></a>
+	<a href="Read.jsp"><button class="btn btn-primary" type="submit">ViewRecords</button></a>
+
+	<br>
+	<br>
+
+	<div class="container" style="text-align: center">
+
+		<br> <a class="btn btn-primary" href="read.jsp" role="button">Add
+			Records</a> &nbsp; &nbsp; <a class="btn btn-primary" href="search.jsp"
+			role="button">View Records</a>
+	</div>
+
+
 	<div style="height: 523px"></div>
 
 	<footer class="footer bg-dark text-light py-3">

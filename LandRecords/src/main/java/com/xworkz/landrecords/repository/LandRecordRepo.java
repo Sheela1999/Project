@@ -21,5 +21,5 @@ public interface LandRecordRepo {
 
 	public LandRecordsDto ifExists(Integer hissaNumber, Integer surveyNumber);
 	
-	public boolean updateStatus(Boolean status, Integer hissaNumber, Integer surveyNumber);
+	public boolean updateStatus(Integer hissaNumber, Integer surveyNumber);
 }

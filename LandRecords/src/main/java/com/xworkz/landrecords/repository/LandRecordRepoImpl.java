@@ -86,7 +86,7 @@ public class LandRecordRepoImpl implements LandRecordRepo {
 	}
 
 	@Override
-	public boolean updateStatus(Boolean status, Integer hissaNumber, Integer surveyNumber) {
+	public boolean updateStatus(Integer hissaNumber, Integer surveyNumber) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		Query query = em.createNamedQuery("updateStatus").setParameter("hissa", hissaNumber)

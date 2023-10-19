@@ -27,13 +27,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "landrecords")
-@NamedQuery(name = "findByHobliAndVillage", query = "select dto from LandRecordsDto dto where dto.hobli=:hobli and dto.village=:village")
+@NamedQuery(name = "findByHobliAndVillage", query = "select dto from LandRecordsDto dto where dto.hobli=:hobli and dto.village=:village and dto.status=true")
 @NamedQuery(name = "readAll", query = "select dto from LandRecordsDto dto")
 @NamedQuery(name = "Edit", query = "update LandRecordsDto dto set dto.ownerName=:on ,dto.mobileNumber=:pn ,dto.aadharNumber =:an "
-		+ "where dto.hissaNumber=:hn and dto.surveyNumber=:sn")
+		+ "where dto.hissaNumber=:hn and dto.surveyNumber=:sn and dto.status=true")
 @NamedQuery(name = "updateStatus", query = "update LandRecordsDto dto set dto.status=false where hissaNumber =:hissa and surveyNumber =:survey")
-@NamedQuery(name = "Delete", query = "delete from LandRecordsDto dto where hissaNumber =:hissa and surveyNumber =:survey")
-@NamedQuery(name = "ifExist", query = "select dto from LandRecordsDto dto where dto.hissaNumber=:hn and dto.surveyNumber=:sn")
+@NamedQuery(name = "ifExist", query = "select dto from LandRecordsDto dto where dto.hissaNumber=:hn and dto.surveyNumber=:sn and dto.status=true")
 public class LandRecordsDto implements Serializable {
 
 	@Id
