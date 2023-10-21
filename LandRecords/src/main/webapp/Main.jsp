@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Main Page</title>
+<title>Admin Main Page</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -51,12 +51,6 @@ button {
 	</header>
 
 	<div style="height: 100px"></div>
-
-	<a href="Save.jsp"><button class="btn btn-primary" type="submit">AddRecords</button></a>
-	<a href="Read.jsp"><button class="btn btn-primary" type="submit">ViewRecords</button></a>
-
-	<br>
-	<br>
 
 	<div class="container" style="text-align: center">
 

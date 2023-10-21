@@ -67,6 +67,9 @@ public class LandRecordsDto implements Serializable {
 	@NotEmpty
 	@Size(min = 5, max = 30, message = "Village is not valid")
 	private String village;
+	@NotBlank
+	@NotEmpty
+	private String totalAcres;
 	private Integer hissaNumber;
 	private Integer surveyNumber;
 	@NotBlank

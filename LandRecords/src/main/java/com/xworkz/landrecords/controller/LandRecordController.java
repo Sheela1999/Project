@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.xworkz.landrecords.dto.LandRecordsDto;
+import com.xworkz.landrecords.dto.UserDto;
 import com.xworkz.landrecords.service.LandRecordService;
+import com.xworkz.landrecords.service.UserService;
 
 @Controller
 public class LandRecordController {
 
 	@Autowired
 	private LandRecordService service;
+	
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveRecords(LandRecordsDto dto, Model model) {
@@ -92,6 +97,32 @@ public class LandRecordController {
 		LandRecordsDto edited = service.editRecords(hissaNumber, surveyNumber, model);
 		System.out.println(edited);
 		return "Edit";
+	}
+	
+	@RequestMapping(value = "/saveUserRecords", method = RequestMethod.POST)
+	public String registration(UserDto dto, Model model) {
+		boolean saved = userService.saveUserDetails(dto, model);
+		System.out.println(saved);
+
+		if (saved) {
+			model.addAttribute("Registration", "Registered Successfully");
+			return "UserSignUp";
+		} else {
+			model.addAttribute("NotRegistration", "Not Registered, Please give proper details");
+			return "UserSignUp";
+		}	
+		
+	}
+	
+	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
+	public String userLogin(@RequestParam String email, @RequestParam String password, Model model) {
+		UserDto logIn = userService.ifExist(email, password, model);
+		System.out.println(logIn);
+		if(logIn != null) {
+			model.addAttribute("Login", "Login Successful");
+			return "UserSignIn";
+		}
+		return "UserSignIn";
 	}
 
 }

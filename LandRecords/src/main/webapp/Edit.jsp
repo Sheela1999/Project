@@ -48,7 +48,7 @@
 					<li class="nav-item"><a class="nav-link" href="#">Dashboard</a>
 					</li>
 
-					<li class="nav-item"><a class="nav-link" href="admin.jsp">LogOut</a>
+					<li class="nav-item"><a class="nav-link" href="SignIn.jsp">LogOut</a>
 					</li>
 				</ul>
 

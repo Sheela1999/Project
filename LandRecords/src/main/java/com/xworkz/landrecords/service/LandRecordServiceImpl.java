@@ -49,8 +49,6 @@ public class LandRecordServiceImpl implements LandRecordService {
 							System.out.println("Data Not Validated");
 							System.out.println(violation);
 						}
-					
-
 				} else {
 					System.out.println("Survey Number is not valid");
 					return false;
