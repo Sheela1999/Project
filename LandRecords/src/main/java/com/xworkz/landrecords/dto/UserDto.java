@@ -29,6 +29,12 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Table(name = "user_registration")
 @NamedQuery(name = "IfExist", query = "select dto from UserDto dto where dto.email=:email and dto.password=:password")
+@NamedQuery(name="pwdExists",query="select dto from UserDto dto where dto.password=:ps ")
+@NamedQuery(name="mailExists",query="select dto from UserDto dto where dto.email=:em ")
+ 
+@NamedQuery(name = "updatingotp" , query = " update UserDto dto set dto.otp =: ot where dto.email=:em")
+@NamedQuery(name = "findotp" , query = "select dto from UserDto dto where dto.otp=:ot")
+@NamedQuery(name = "updatingpwd" , query = " update UserDto dto set dto.password =: pd ,dto.confirmPassword=:cpd  where dto.email=:em")
 public class UserDto implements Serializable {
 	
 	@Id
@@ -55,5 +61,6 @@ public class UserDto implements Serializable {
 	@NotEmpty
 	@Size(min = 8, max = 15, message = "Check your Password")
 	private String confirmPassword;
+	private String otp =null;
 
 }

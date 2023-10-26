@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>User Main Page</title>
+<title>Update Password</title>
 
 <style type="text/css">
 .gradient-custom-3 {
@@ -38,19 +38,6 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-
-<style type="text/css">
-#land {
-	color: white;
-}
-
-</style>
-
 </head>
 <body>
 
@@ -62,53 +49,79 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
         <a class="navbar-brand mt-2 mt-lg-0" href="#">
             <h5 class="pt-1">LandRecord</h5>
         </a>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" id="home"
-					style="color: white "href="Index.jsp" role="button">Home</a></li>
-				</ul>
-			</div>
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="User.jsp">SignOut</a>
+                </li>
+                
+             </ul>   
+                
+           
+            <!-- Right elements -->
+        </div>
         <!-- Collapsible wrapper -->
     </div>
     <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
 
+ 
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-70">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <br><br><br>
+          <div class="card" style="border-radius: 50px;">
+            <div class="card-body p-5">
+            
+             <h5 style="color: red;" align="center">${mismatch}</h5>
+             <h5 style="color: red;" align="center">${validpwd}</h5>
 
-	<section class="vh-100 bg-image"
-		style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
-		<div class="mask d-flex align-items-center h-100 gradient-custom-3">
-			<div class="container h-100">
-				<div
-					class="row d-flex justify-content-center align-items-center h-70">
-					<div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <form action="updatepwd" method="post">
 
-						<div style="height: 100px"></div>
+                <div class="form-outline mb-3">
+                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" placeholder="Your Email" required/>                 
+                </div>
+                <h5 style="color: red;">${Email}</h5>
 
-						<div class="container" style="text-align: center">
-						
-						<h1>Welcome......</h1>
+                <div class="form-outline mb-3">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" name="password" placeholder="New Password" required />
+                 </div>
+                 <h5 style="color: red;">${Password}</h5>
+                 
+                 <div class="form-outline mb-3">
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" name="confirmPassword" placeholder="Confirm Password" required />
+                  </div>
+                  <h5 style="color: red;">${ConfirmPassword}</h5>
 
-							<br> <a class="btn btn-primary" href="UserSignUp.jsp"
-								role="button">User SignUp </a> &nbsp; &nbsp; <a
-								class="btn btn-primary" href="UserSignIn.jsp" role="button">User
-								SignIn</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                 <br>
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update Password</button>
+                </div>
+<br><br>
+              </form>
 
+            </div>
+          </div>
+      <br><br><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<div style="height: 0px"></div>
-
-	<footer class="footer bg-dark text-light py-3">
+<footer class="footer bg-dark text-light py-3">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">

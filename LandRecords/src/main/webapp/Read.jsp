@@ -654,7 +654,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 					<label class="form-lbl" for="hobli"> Hobli</label> <select
 						class="form-control" name="hobli" id="hobli" required>
-						<option value="">Select a HOBLI</option>
+						<option value="">SELECT A HOBLI</option>
 						<option value="HUNCHA">HUNCHA</option>
 						<option value="NAGARA">NAGARA</option>
 
@@ -915,7 +915,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 
 				&nbsp;&nbsp;
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
 						<button type="submit" class="form-control btn btn-primary">Go</button>
 				</div>
@@ -951,13 +951,13 @@ document.getElementById("hobli").addEventListener("change", function() {
 <td>${list.hissaNumber}</td>
 <td>${list.surveyNumber}</td>
 <td>${list.year}</td>
-<td><a class="btn btn-primary" href="updateRecords?hissaNumber=${list.hissaNumber}&surveyNumber=${list.surveyNumber}" role="button"> Edit</a>
+<td><a class="btn btn-primary" href="updateRecords?hissaNumber=${list.hissaNumber}&surveyNumber=${list.surveyNumber}" role="button" style="padding-right: 25px; padding-left: 25px"> Edit</a>
  </td>
 <td> 
 			<form action="remove" method="post">
 			<input type="hidden" name="hissaNumber" value="${list.hissaNumber}">
 			<input type="hidden" name="surveyNumber" value="${list.surveyNumber}">
-			<button type="submit" class="btn btn-primary" >Delete</button>
+			<button type="submit" class="btn btn-primary">Delete</button>
 			</form>
 			 </td>
 

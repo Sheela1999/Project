@@ -59,7 +59,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="User.jsp">LogOut</a>
+                    <a class="nav-link" href="User.jsp">SignOut</a>
                 </li>
                 
              </ul>   
@@ -108,6 +108,8 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 </div>
 <br><br>
               </form>
+              
+              <p> <a href="ForgetPwd.jsp"> forgot password!</a></p>
 
             </div>
           </div>

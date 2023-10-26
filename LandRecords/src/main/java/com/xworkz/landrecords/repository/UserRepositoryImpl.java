@@ -41,4 +41,50 @@ public class UserRepositoryImpl implements UserRepository {
 		return dto;
 	}
 
+	@Override
+	public UserDto passwordExists(String password) {
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createNamedQuery("pwdExists").setParameter("ps", password);
+		UserDto ref1 = (UserDto) query.getSingleResult();
+		return ref1;
+
+	}
+
+	@Override
+	public UserDto mailExists(String mail) {
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createNamedQuery("mailExists").setParameter("em", mail);
+		UserDto ref1 = (UserDto) query.getSingleResult();
+		return ref1;
+	}
+
+	@Override
+	public boolean updateOtpByEmail(String otp, String mail) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("updatingotp").setParameter("ot", otp).setParameter("em", mail);
+		query.executeUpdate();
+		em.getTransaction().commit();
+		return true;
+	}
+
+	@Override
+	public UserDto findByOtp1(String otp) {
+		EntityManager em = emf.createEntityManager();
+		Query query = em.createNamedQuery("findotp").setParameter("ot", otp);
+		UserDto reg = (UserDto) query.getSingleResult();
+		return reg;
+	}
+
+	@Override
+	public boolean updatePassword(String password, String cPassword, String mail) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createNamedQuery("updatingpwd").setParameter("pd", password).setParameter("cpd", cPassword)
+				.setParameter("em", mail);
+		query.executeUpdate();
+		em.getTransaction().commit();
+		return true;
+	}
+
 }

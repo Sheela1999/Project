@@ -21,7 +21,7 @@ public class LandRecordController {
 
 	@Autowired
 	private LandRecordService service;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -67,7 +67,8 @@ public class LandRecordController {
 	}
 
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String deleteRecords(@RequestParam("hissaNumber") Integer hissaNumber, @RequestParam("surveyNumber") Integer surveyNumber, Model model) {
+	public String deleteRecords(@RequestParam("hissaNumber") Integer hissaNumber,
+			@RequestParam("surveyNumber") Integer surveyNumber, Model model) {
 		boolean statusUpdated = service.updateStatus(hissaNumber, surveyNumber);
 		System.out.println(statusUpdated);
 		boolean remove = service.deleteRecords(hissaNumber, surveyNumber, model);
@@ -81,11 +82,11 @@ public class LandRecordController {
 	@RequestMapping(value = "/readAll", method = RequestMethod.GET)
 	public String ReadAll(LandRecordsDto dto, Model model) {
 		List<LandRecordsDto> readData = service.readAll();
-		if(readData != null) {
-		model.addAttribute("readList", readData);
-		System.out.println("Reading All the records");
-		return "ViewAll";
-		}else {
+		if (readData != null) {
+			model.addAttribute("readList", readData);
+			System.out.println("Reading All the records");
+			return "ViewAll";
+		} else {
 			model.addAttribute("Reading", "No Records Found");
 			return "ViewAll";
 		}
@@ -98,7 +99,7 @@ public class LandRecordController {
 		System.out.println(edited);
 		return "Edit";
 	}
-	
+
 	@RequestMapping(value = "/saveUserRecords", method = RequestMethod.POST)
 	public String registration(UserDto dto, Model model) {
 		boolean saved = userService.saveUserDetails(dto, model);
@@ -110,19 +111,53 @@ public class LandRecordController {
 		} else {
 			model.addAttribute("NotRegistration", "Not Registered, Please give proper details");
 			return "UserSignUp";
-		}	
-		
+		}
+
 	}
-	
+
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
 	public String userLogin(@RequestParam String email, @RequestParam String password, Model model) {
 		UserDto logIn = userService.ifExist(email, password, model);
 		System.out.println(logIn);
-		if(logIn != null) {
+		if (logIn != null) {
 			model.addAttribute("Login", "Login Successful");
 			return "UserSignIn";
 		}
 		return "UserSignIn";
+	}
+
+	@RequestMapping(value = "/forget", method = RequestMethod.POST)
+	public String verify(@RequestParam String email, Model model) {
+
+		boolean sign = userService.checkotp1(email, model);
+		if (sign) {
+			model.addAttribute("checking", "check the email");
+			return "forgetpwd";
+		}
+		return "forgetpwd";
+	}
+
+	@RequestMapping(value = "/checksotp", method = RequestMethod.POST)
+	public String verifyotp(@RequestParam String otp, Model model) {
+
+		UserDto verifiedOTP = userService.findByOtp1(otp, model);
+		if (verifiedOTP != null) {
+			model.addAttribute("check", verifiedOTP);
+			return "UpdatePwd";
+		}
+		return "forgetpwd";
+	}
+
+	@RequestMapping(value = "/updatepwd", method = RequestMethod.POST)
+	public String updatePassword(@RequestParam String email, @RequestParam String password,
+			@RequestParam String cPassword, Model model) {
+		boolean updated = userService.updatePassword(password, cPassword, email, model);
+		if (updated) {
+			model.addAttribute("updated", "updated");
+			return "userview";
+		}
+
+		return "UpdatePwd";
 	}
 
 }

@@ -583,28 +583,26 @@ document.getElementById("hobli").addEventListener("change", function() {
 		<form class="form" action="save" method="post">
 			<div class="row">
 
-				<div class="col-md-3">
-					<label class="form-lbl" style="font-size: large;"><b>Owner Name</b></label> 
+				<div class="col-md-3" style="padding-right: 1px">
+					<label class="form-lbl" style="font-size: large;" ><b>Owner Name</b></label> 
 					<input type="text" name="ownerName" class="form-control" id="" placeholder="" required>
 				</div>
 
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-left: 10px; padding-right: 2px">
 					<label class="form-lbl" style="font-size: large;"><b>Mobile Number</b></label> 
 					<input type="number" name="mobileNumber" class="form-control" id="" placeholder="" required>
 				</div>
 
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-left: 5px; padding-right: 4px">
 					<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"><b>Aadhar Number</b></label> 
 					    <input type="number" name="aadharNumber" class="form-control" id="" placeholder="" required>
 					</fieldset>
 				</div>
 
-				<div class="col-md-3">
-					<div class="form-group view-password">
+				<div class="col-md-3" style="padding-left: 4px;">
 						<label class="form-lbl" style="font-size: large;"> <b>Year</b></label>
 						<input type="number" name="year" class="form-control" id="" placeholder="" required>
-					</div>
 				</div>
 			</div>
 
@@ -620,7 +618,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				</div>
 
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-right: 4px">
 
 					<label for="district" class="form-lbl" style="font-size: large;"><b>District</b></label>
 					<select id="district" class="form-control" name="district" required>
@@ -635,7 +633,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				</div>
 
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-right: 4px">
 
 					<label for="taluk" class="form-lbl" style="font-size: large;"><b>Taluk</b></label>
 					<select id="taluk" class="form-control" name="taluk" required>
@@ -668,7 +666,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 					<label class="form-lbl" for="hobli" style="font-size: large;">
 						<b>Hobli</b>
 					</label> <select class="form-control" name="hobli" id="hobli" required>
-						<option value="">Select A HOBLI</option>
+						<option value="">SELECT A HOBLI</option>
 						
 						<option value="HUNCHA">HUNCHA</option>
 						<option value="NAGARA">NAGARA</option>
@@ -731,7 +729,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 			<br>
 			
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-right: 1px">
 
 					<label class="form-lbl" for="village" style="font-size: large;"><b>Village</b></label>
 					<select class="form-control select2" name="village" id="village" required>
@@ -917,34 +915,32 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 					</select>
 
-				</div>
-				&nbsp; &nbsp;
+				</div>		 
 
-				<div class="col-md-3">
+				<div class="col-md-3" style="padding-left: 8px; padding-right: 4px">
 					<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"> <b>Survey Number</b></label> 
 						<input type="number" name="surveyNumber" class="form-control" id="" placeholder="">
 					</fieldset>
 				</div>
 
-				&nbsp; &nbsp;
-
-				<div class="col-md-3">
-					<div class="form-group view-password">
+				<div class="col-md-3" style="padding-left: 4px; padding-right: 4px">
+					<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"> <b>Hissa Number</b></label> 
 						<input type="number" name="hissaNumber" class="form-control" id="" placeholder="">
+						</fieldset>
 					</div>
 
-				</div>
-
-				<div class="col-md-3">
-					<label class="form-lbl" style="font-size: large;"><b>Total Acres</b></label> 
-					<input type="text" name="totalAcres" class="form-control" id="" placeholder="">
+				<div class="col-md-3" style="padding-left: 4px;">
+				    <fieldset class="form-group">
+					  <label class="form-lbl" style="font-size: large;"><b>Total Acres</b></label> 
+					  <input type="text" name="totalAcres" class="form-control" id="" placeholder="">
+					</fieldset>
 				</div>
 
 			</div>
 			<br>
-			<center><button type="submit" class="btn btn-primary">save</button></center>
+			<center><button type="submit" class="btn btn-primary" style="padding-right: 40px; padding-left: 40px">save</button></center>
 
 		</form>
 		<br>
