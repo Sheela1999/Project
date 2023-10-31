@@ -143,7 +143,7 @@ public class UserServiceImpl implements UserService {
 				if (list.getOtp().equals(otp)) {
 					return list;
 				} else {
-					models.addAttribute("findotp2", "otp not matched");
+					models.addAttribute("Foundotp", "otp not matched");
 					return null;
 				}
 
@@ -151,11 +151,10 @@ public class UserServiceImpl implements UserService {
 		} catch (NoResultException e) {
 
 			System.out.println("dto null");
-			models.addAttribute("findotp1", "wrong otp ");
+			models.addAttribute("Findotp1", "wrong otp ");
 			return null;
 		}
-		models.addAttribute("findotp", "not found");
-
+		models.addAttribute("Findotp", "not found");
 		return null;
 	}
 
@@ -224,10 +223,10 @@ public class UserServiceImpl implements UserService {
 			if (password.equals(cPassword)) {
 				return userRepo.updatePassword(password, cPassword, mail);
 			}
-			model.addAttribute("mismatch", "The password and confirm password must be same");
+			model.addAttribute("Mismatch", "The password and confirm password must be same");
 			return false;
 		}
-		model.addAttribute("validpwd", "Please give the password minimum length 8 to maximum 15");
+		model.addAttribute("Validpwd", "Please give the password minimum length 8 to maximum 15");
 		return false;
 	}
 

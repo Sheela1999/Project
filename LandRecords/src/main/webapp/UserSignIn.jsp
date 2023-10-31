@@ -85,7 +85,6 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <div class="card-body p-5">
             
              <h5 style="color: green;" align="center">${Login}</h5>
-             <h5 style="color: red;" align="center">${Exist}</h5>
               <h5 style="color: red;" align="center">${Account}</h5>
             
               <h2 class="text-uppercase text-center mb-5">SignIn</h2>

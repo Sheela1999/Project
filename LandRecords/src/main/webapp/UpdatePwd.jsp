@@ -85,10 +85,11 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
           <div class="card" style="border-radius: 50px;">
             <div class="card-body p-5">
             
+             <h5 style="color: green;" align="center">${updated}</h5>
              <h5 style="color: red;" align="center">${mismatch}</h5>
              <h5 style="color: red;" align="center">${validpwd}</h5>
 
-              <form action="updatepwd" method="post">
+              <form action="updatePwd" method="post">
 
                 <div class="form-outline mb-3">
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" placeholder="Your Email" required/>                 

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>View Records</title>
+<title>View User Details</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
- <script type="text/javascript">
+
+<script type="text/javascript">
 
 function populateDropdowns() {
 	var selectedState = document.getElementById("state");
@@ -21,8 +22,6 @@ function populateDropdowns() {
     var talukDropdown = document.getElementById("taluk"); // Fix this line
     var hobliDropdown = document.getElementById("hobli");
     var villageDropdown = document.getElementById("village");
-
-  
 	
     if (selectedState === "KARNATAKA") {
         populateDropdown(districtDropdown, [
@@ -214,7 +213,6 @@ function populateDropdowns() {
     }
  
 });
-
 
 document.getElementById("hobli").addEventListener("change", function() {
     var selectedHobli  = this.value;
@@ -537,10 +535,11 @@ document.getElementById("hobli").addEventListener("change", function() {
         }
     }
 
+
 }
 
 </script>  
- 
+
 </head>
 <body>
 <!-- Navbar -->
@@ -586,8 +585,11 @@ document.getElementById("hobli").addEventListener("change", function() {
 			
 			<br>
 			<h1 align="center">Land Records</h1> 
+				<h5 style="color: red">${Read}</h5>
+				<h5 style="color: red">${Reading}</h5>
+			
 			<br> 
-			<form class="search" action="check" method="post">
+			<form class="view" action="userView" method="post">
 			<div class="form-row">
 				<div class="col">
 
@@ -603,8 +605,8 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 					<label for="district" class="form-lbl">District</label> <select
 						id="district" class="form-control" name="district" required>
+
 						<option value="">SELECT A DISTRICT</option>
-						
 						<option value="SHIVAMOGGA">SHIVAMOGGA</option>
 						<option value="MANDYA">MANDYA</option>
 						<option value="MYSORE">MYSORE</option>
@@ -618,7 +620,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 					<label for="taluk" class="form-lbl">Taluk</label> <select
 						id="taluk" class="form-control" name="taluk" required>
 						<option value="">SELECT A TALUK</option>
-						
 						<option value="HOSANAGARA">HOSANAGARA</option>
 						<option value="THIRTHAHALLI">THIRTHAHALLI</option>
 						<option value="SAGARA">SAGARA</option>
@@ -705,7 +706,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="Beedi">BEEDI</option>
 						<option value="Gunji">GUNJI</option>
 
-
 					</select>
 
 				</div>
@@ -714,7 +714,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 					<label class="form-lbl" for="village">Village</label> <select
 						class="form-control select2" name="village" id="village" required>
 						<option value="">SELECT A VILLAGE</option>
-						
 						<option value="AMRUTA">AMRUTA</option>
 						<option value="ANEGADDE">ANEGADDE</option>
 						<option value="BILLODI">BILLODI</option>
@@ -800,7 +799,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="anuvallu">ANUVALLU</option>
 						<option value="Arakanakere">ARAKANAKERE</option>
 
-
 						<!-- Mysore(kasaba)  -->
 						<option value="Bogadi">BOGADI</option>
 						<option value="Goruru">GORURU</option>
@@ -871,7 +869,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="betageri">BETAGERI</option>
 						<option value="kandrattti">KANDRATTI</option>
 						<option value="mannikeri">MANNIKERI</option>
-						
 						<!-- K Chandaragi -->
 
 						<option value="beedaki">BEEDAKI</option>
@@ -901,63 +898,70 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				</div>
 
-				&nbsp;&nbsp;
 				<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
 						<button type="submit" class="form-control btn btn-primary">Go</button>
 				</div>
 			</div>
 
-		</form>
+		</form>	
+		<br>
+		<br>
+		<form id = "card" action="userCard" method="post">
+		
+		<div class="row">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		<div class="col-md-3" style="width: 140px">
+					<fieldset class="form-group">
+						<label class="form-lbl">Survey Number</label> 
+						<select name="surveyNumber" class="form-control" id="surveyNumber">
+						<option value="">SELECT A SURVEY NUMBER</option>
+						<c:forEach var="list" items="${view}">
+						<option value="${list.surveyNumber}">${list.surveyNumber}</option>
+						</c:forEach>
+						</select>
+					</fieldset>
+				</div>
+
+				<div class="col-md-3" style="width: 140px">
+					<fieldset class="form-group">
+						<label class="form-lbl">Hissa Number</label> 
+						<select name="hissaNumber" class="form-control" id="hissaNumber">
+						<option value="">SELECT A HISSA NUMBER</option>
+						<c:forEach var="list" items="${view}">
+						<option value="${list.hissaNumber}">${list.hissaNumber}</option>
+						</c:forEach>
+						</select>
+						</fieldset>
+					</div>
+					
+					<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
+						<label class="form-lbl"> . </label>
+						<button type="submit" class="form-control btn btn-primary">Go</button>
+				</div>
 			</div>
 		
-			<br>
-			  <table class="table">
-
-  <thead class="table-dark">
-  <tr>
-       
-      <th scope="col">Owner Name</th>
-      <th scope="col">Mobile No</th>
-      <th scope="col">Aadhar No</th>
-      <th scope="col">Hissa No</th>
-      <th scope="col">Survey No</th>
-      <th scope="col">Year</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-      
-    </tr></thead>
-  
-  <tbody>     
-  <c:forEach var="list" items="${found}">
-<tr>
- 
-<td>${list.ownerName}</td>
-<td>${list.mobileNumber}</td>
-<td>${list.aadharNumber}</td>
-<td>${list.hissaNumber}</td>
-<td>${list.surveyNumber}</td>
-<td>${list.year}</td>
-<td><a class="btn btn-primary" href="updateRecords?hissaNumber=${list.hissaNumber}&surveyNumber=${list.surveyNumber}" role="button" style="padding-right: 25px; padding-left: 25px"> Edit</a>
- </td>
-<td> 
-			<form action="remove" method="post">
-			<input type="hidden" name="hissaNumber" value="${list.hissaNumber}">
-			<input type="hidden" name="surveyNumber" value="${list.surveyNumber}">
-			<button type="submit" class="btn btn-primary">Delete</button>
-			</form>
-			 </td>
-
-</tr>
-
-</c:forEach>
-  </tbody>
-  
-  </tbody>
-</table>
-<h5 style="color: red">${NotFound}</h5>
-<h5 style="color: green">${delete}</h5>
-
+		</form>
+		<br>
+		<center><div class="col-md-2">
+						<button type="button" class="form-control btn btn-primary" id="showCard" style="align-items: center;">View Records</button>
+				</div></center>
+	</div>
+	<br>
+	
+	<center><div class="card" id="myCard" style="display: none;">
+	<div class="card-body">
+	<h5 class="card-title">LAND OWNER DETAILS</h5>
+	<h6 class="card-subtitle mb-2 text-muted">OWNER NAME: ${read.ownerName}</h6>
+	<h6 class="card-subtitle mb-2 text-muted">AADHAR NUMBER: ${read.aadharNumber}</h6>
+	<h6 class="card-subtitle mb-2 text-muted">MOBILE NUMBER: ${read.mobileNumber}</h6>
+	<h6 class="card-subtitle mb-2 text-muted">YEAR OF REGISTERATION: ${read.year}</h6>
+	</div>
+	</div></center>
+	
 	<div style="height: 255px"></div>
 
 	<footer class="footer bg-dark text-light py-3">
@@ -978,6 +982,22 @@ document.getElementById("hobli").addEventListener("change", function() {
 			</div>
 		</div>
 	</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+	
+	<script>
+	
+	document.getElementById("showCard").addEventListener("click", function() {
+		$("#myCard").show();
+	
+	setTimeout(function(){
+		$("#myCard").hide();
+	},15000);
+	
+	});
+	
+	</script>
 
 </body>
 </html>

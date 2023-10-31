@@ -121,7 +121,7 @@ public class LandRecordController {
 		System.out.println(logIn);
 		if (logIn != null) {
 			model.addAttribute("Login", "Login Successful");
-			return "UserSignIn";
+			return "ViewUser";
 		}
 		return "UserSignIn";
 	}
@@ -131,33 +131,58 @@ public class LandRecordController {
 
 		boolean sign = userService.checkotp1(email, model);
 		if (sign) {
-			model.addAttribute("checking", "check the email");
-			return "forgetpwd";
+			model.addAttribute("Checking", "Check the Email");
+			return "ForgetPwd";
 		}
-		return "forgetpwd";
+		return "ForgetPwd";
 	}
 
 	@RequestMapping(value = "/checksotp", method = RequestMethod.POST)
-	public String verifyotp(@RequestParam String otp, Model model) {
+	public String verifytp(@RequestParam String otp, Model model) {
 
 		UserDto verifiedOTP = userService.findByOtp1(otp, model);
 		if (verifiedOTP != null) {
 			model.addAttribute("check", verifiedOTP);
 			return "UpdatePwd";
 		}
-		return "forgetpwd";
+		return "ForgetPwd";
 	}
 
-	@RequestMapping(value = "/updatepwd", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatePwd", method = RequestMethod.POST)
 	public String updatePassword(@RequestParam String email, @RequestParam String password,
-			@RequestParam String cPassword, Model model) {
-		boolean updated = userService.updatePassword(password, cPassword, email, model);
+			@RequestParam String confirmPassword, Model model) {
+		boolean updated = userService.updatePassword(password, confirmPassword, email, model);
 		if (updated) {
-			model.addAttribute("updated", "updated");
-			return "userview";
+			model.addAttribute("updated", "Password Updated Successfully");
+			return "ViewUser";
 		}
-
 		return "UpdatePwd";
+	}
+
+	@RequestMapping(value = "/userView", method = RequestMethod.POST)
+	public String viewUser(@RequestParam String hobli, @RequestParam String village, Model model) {
+		List<LandRecordsDto> viewData = service.findByHobliAndVillage(hobli, village, model);
+		System.out.println(viewData);
+		
+		if (viewData != null) {
+			model.addAttribute("view", viewData);
+			System.out.println("Data is Present");
+			return "ViewUser";
+		}
+		model.addAttribute("Read", "Records not found");
+		return "ViewUser";
+	}
+
+	@RequestMapping(value = "/userCard", method = RequestMethod.POST)
+	public String userView(@RequestParam Integer hissaNumber, @RequestParam Integer surveyNumber, Model model) {
+		LandRecordsDto data = service.ifExists(hissaNumber, surveyNumber, model);
+		if (data != null) {
+			model.addAttribute("read", data);
+			System.out.println("Data is Present");
+			return "ViewUser";
+		}
+		model.addAttribute("Reading", "No Records found");
+		return "ViewUser";
 	}
 
 }

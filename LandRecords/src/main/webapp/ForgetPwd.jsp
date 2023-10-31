@@ -28,7 +28,6 @@ background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 
 background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
 }
 
-
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,7 +35,6 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 
 </head>
 <body>
@@ -90,10 +88,10 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             
               <h1>  OTP SENDING </h1> 
 
-			<h6 style="color: green;">${checking}</h6>
-			<h6 style="color: red;">${findotp2}</h6>
-			<h6 style="color: red;">${findotp1}</h6>
-			<h6 style="color: red;">${findotp}</h6>
+			<h6 style="color: green;">${Checking}</h6>
+			<h6 style="color: red;">${Foundotp}</h6>
+			<h6 style="color: red;">${Findotp1}</h6>
+			<h6 style="color: red;">${Findotp}</h6>
 			
 				<form action="forget" method="post">
 					 
@@ -101,7 +99,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" placeholder="Enter Your Email" required/>                 
                 </div>
                 <h5 style="color: red;">${Email}</h5>
- 				 	 <p> <a href="ForgetPwd.jsp"> Resend OTP</a></p>
+ 				 	 <p> <a href="ForgetPwd.jsp">Resend OTP</a></p>
 					<div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send OTP</button>
                 </div>
@@ -115,16 +113,13 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 <h6 style="color: green;">${otpsent}</h6>
  				 	 <br>
  				 	 
-					<button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Submit</button>
-				</form>
-				 
-				
+					<button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" <a href="UpdatePwd.jsp"> </a>>Submit</button>
+				</form>	
 				
 			</div>
 		</div>
 		 <br><br><br><br>
-		 
-		 
+		 	 
 		<!-- //copyright -->
 		 
 	</div>
@@ -152,7 +147,6 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
 			</div>
 		</div>
 	</footer>
-
-
+	
 </body>
 </html>
