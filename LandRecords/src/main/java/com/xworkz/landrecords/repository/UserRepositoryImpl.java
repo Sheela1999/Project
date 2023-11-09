@@ -77,10 +77,10 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public boolean updatePassword(String password, String cPassword, String mail) {
+	public boolean updatePassword(String password, String confirmPassword, String mail) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createNamedQuery("updatingpwd").setParameter("pd", password).setParameter("cpd", cPassword)
+		Query query = em.createNamedQuery("updatingpwd").setParameter("pd", password).setParameter("cpd", confirmPassword)
 				.setParameter("em", mail);
 		query.executeUpdate();
 		em.getTransaction().commit();

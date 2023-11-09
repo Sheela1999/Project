@@ -18,6 +18,6 @@ public interface UserRepository {
 
 	public UserDto findByOtp1(String otp);
 
-	public boolean updatePassword(String password, String cPassword, String mail);
+	public boolean updatePassword(String password, String confirmPassword, String mail);
 
 }

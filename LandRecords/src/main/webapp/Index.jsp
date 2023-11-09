@@ -47,7 +47,7 @@
 					<li class="nav-item"><a class="nav-link" id="admin"
 						href="SignIn.jsp">Admin</a></li>
 					<li class="nav-item"><a class="nav-link" id="user"
-						href="SignIn.jsp">User</a></li>
+						href="User.jsp">User</a></li>
 				</ul>
 			</div>
 		</div>

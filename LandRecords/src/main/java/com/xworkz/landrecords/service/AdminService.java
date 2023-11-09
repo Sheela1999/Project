@@ -12,10 +12,14 @@ public interface AdminService {
 
 	public String generateOTP();
 	
-	public boolean signIn(String email, Model model);
+	public boolean signIn(String email, Model model) throws Exception;
 	
-	public AdminDto otpValidation(String otp, Model model);
+	public AdminDto findByOtp(String otp, Model model) throws Exception;
 	
 	public boolean SendOtpToEmail(String otp, String email, Model model);
+	
+	public String encryptPWDAndOTP(String password, String Secretkey) throws Exception;
+	
+	public String decryptPWDAndOtp(String encryptPwd, String Secretkey) throws NegativeArraySizeException;
 
 }

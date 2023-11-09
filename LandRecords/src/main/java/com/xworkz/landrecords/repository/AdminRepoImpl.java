@@ -49,7 +49,7 @@ public class AdminRepoImpl implements AdminRepo{
 	}
 
 	@Override
-	public AdminDto findByOtp(String otp) throws Exception{
+	public AdminDto findByOtp(String otp){
 		EntityManager em = emf.createEntityManager();
 		TypedQuery<AdminDto> query = em.createNamedQuery("findByOtp", AdminDto.class)
 				.setParameter("otp", otp);
@@ -57,8 +57,5 @@ public class AdminRepoImpl implements AdminRepo{
 		System.out.println(dto);
 		return dto;
 	}
-	
-	
-	
 
 }

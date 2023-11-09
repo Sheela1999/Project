@@ -2,6 +2,8 @@ package com.xworkz.landrecords.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -101,13 +103,13 @@ public class LandRecordController {
 	}
 
 	@RequestMapping(value = "/saveUserRecords", method = RequestMethod.POST)
-	public String registration(UserDto dto, Model model) {
+	public String registration(UserDto dto, Model model) throws Exception {
 		boolean saved = userService.saveUserDetails(dto, model);
 		System.out.println(saved);
 
 		if (saved) {
 			model.addAttribute("Registration", "Registered Successfully");
-			return "UserSignUp";
+			return "ViewUser";
 		} else {
 			model.addAttribute("NotRegistration", "Not Registered, Please give proper details");
 			return "UserSignUp";
@@ -117,20 +119,22 @@ public class LandRecordController {
 
 	@RequestMapping(value = "/userLogin", method = RequestMethod.POST)
 	public String userLogin(@RequestParam String email, @RequestParam String password, Model model) {
-		UserDto logIn = userService.ifExist(email, password, model);
+		UserDto logIn = userService.logIn(email, password, model);
 		System.out.println(logIn);
 		if (logIn != null) {
 			model.addAttribute("Login", "Login Successful");
 			return "ViewUser";
 		}
+		model.addAttribute("Login", "Not Login, Check your email and password");
 		return "UserSignIn";
 	}
 
 	@RequestMapping(value = "/forget", method = RequestMethod.POST)
-	public String verify(@RequestParam String email, Model model) {
+	public String forgotPassword(@RequestParam String email, Model model, HttpSession session) throws Exception {
 
 		boolean sign = userService.checkotp1(email, model);
 		if (sign) {
+			session.setAttribute("email", email);
 			model.addAttribute("Checking", "Check the Email");
 			return "ForgetPwd";
 		}
@@ -138,23 +142,34 @@ public class LandRecordController {
 	}
 
 	@RequestMapping(value = "/checksotp", method = RequestMethod.POST)
-	public String verifytp(@RequestParam String otp, Model model) {
-
-		UserDto verifiedOTP = userService.findByOtp1(otp, model);
-		if (verifiedOTP != null) {
-			model.addAttribute("check", verifiedOTP);
-			return "UpdatePwd";
+	public String verifyOtp(@RequestParam String otp, Model model,  HttpSession session) {
+		String email = (String) session.getAttribute("email");
+		System.out.println(email);
+		if(email != null) {
+			UserDto foundMail = userService.findByMail(email, model);
+			if(foundMail != null) {
+				String dcOtp = userService.decryptPWD(foundMail.getOtp(), "EncryptOtp");
+				if(otp.equals(dcOtp)) {
+					return "UpdatePwd";
+				}
+				System.out.println("otp error");
+				return "ForgetPwd";
+			}
+			System.out.println("dto error");
+			return "ForgetPwd";
 		}
+
+		System.out.println("dto  missed");
 		return "ForgetPwd";
 	}
 
 	@RequestMapping(value = "/updatePwd", method = RequestMethod.POST)
 	public String updatePassword(@RequestParam String email, @RequestParam String password,
-			@RequestParam String confirmPassword, Model model) {
+			@RequestParam String confirmPassword, Model model) throws Exception {
 		boolean updated = userService.updatePassword(password, confirmPassword, email, model);
 		if (updated) {
 			model.addAttribute("updated", "Password Updated Successfully");
-			return "ViewUser";
+			return "UserSignIn";
 		}
 		return "UpdatePwd";
 	}

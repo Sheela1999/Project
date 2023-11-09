@@ -8,6 +8,6 @@ public interface AdminRepo {
 	
 	public boolean updateOtpByEmail(String otp, String email);
 	
-	public AdminDto findByOtp(String otp) throws Exception;
+	public AdminDto findByOtp(String otp);
 
 }

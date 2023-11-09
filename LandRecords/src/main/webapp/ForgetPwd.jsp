@@ -105,15 +105,16 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 </div>
 				</form>
 				<br>
-				<form action="checksotp" method="post">
-					 
-					<div class="form-outline mb-3">
+				<form action="checksotp" method="post">	 
+				 	                  
+                <div class="form-outline mb-3">
+                <input name="email" type="hidden" value="${email}" >
                   <input type="password" id="otp" class="form-control form-control-lg" name="otp" placeholder="Enter OTP" required/>                 
                 </div>
                 <h6 style="color: green;">${otpsent}</h6>
  				 	 <br>
  				 	 
-					<button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" <a href="UpdatePwd.jsp"> </a>>Submit</button>
+					<button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Submit</button>
 				</form>	
 				
 			</div>

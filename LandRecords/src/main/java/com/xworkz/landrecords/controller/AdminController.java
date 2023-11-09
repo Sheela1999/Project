@@ -1,5 +1,7 @@
 package com.xworkz.landrecords.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +20,10 @@ public class AdminController {
 	private AdminService service;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginData(@RequestParam String email, Model model) {
+	public String loginData(@RequestParam String email, Model model,HttpSession session) throws Exception {
 		boolean status = service.signIn(email, model);
 		if (status) {
+			session.setAttribute("email1", email);
 			System.out.println("Email Verified");
 			return "SignIn";
 		} else {
@@ -30,17 +33,23 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/sendOTP", method = RequestMethod.POST)
-	public String otpVerification(@RequestParam String otp, Model model) {
-		AdminDto sentData = service.otpValidation(otp, model);
-
-		if (sentData != null) {
-			System.out.println("otp verified");
-			model.addAttribute("dto", sentData);
-			return "Main";
-		} else {
-			System.out.println("Invalid OTP, Please enter correct OTP");
-			return "SignIn";
+	public String otpVerification(@RequestParam String otp, Model model, HttpSession session) {
+		String email = (String) session.getAttribute("email1");
+		System.out.println(email);
+		if (email != null) {
+			AdminDto found = service.findByEmail(email, model);
+			session.setAttribute("Admin", found);
+			
+			String decrypted = service.decryptPWDAndOtp(found.getOtp(), "encrypting");
+			System.out.println(decrypted);
+			if(otp.equals(decrypted)) {
+				return "Main";
+			}
+			model.addAttribute("IsOTPvalid", "Invalid OTP, Please enter correct OTP");
+			return null;
 		}
+        return "SignIn";
+		
 	}
 
 }

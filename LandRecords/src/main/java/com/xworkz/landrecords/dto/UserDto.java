@@ -27,7 +27,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @EqualsAndHashCode
-@Table(name = "user_registration")
+@Table(name = "user_reg")
 @NamedQuery(name = "IfExist", query = "select dto from UserDto dto where dto.email=:email and dto.password=:password")
 @NamedQuery(name="pwdExists",query="select dto from UserDto dto where dto.password=:ps ")
 @NamedQuery(name="mailExists",query="select dto from UserDto dto where dto.email=:em ")
@@ -55,11 +55,11 @@ public class UserDto implements Serializable {
 	private String aadharNumber;
 	@NotBlank
 	@NotEmpty
-	@Size(min = 8, max = 15, message = "Give Strong Password")
+	@Size(min = 8, message = "Give Strong Password")
 	private String password;
 	@NotBlank
 	@NotEmpty
-	@Size(min = 8, max = 15, message = "Check your Password")
+	@Size(min = 8, message = "Check your Password")
 	private String confirmPassword;
 	private String otp =null;
 

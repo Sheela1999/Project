@@ -1,7 +1,23 @@
 package com.xworkz.landrecords.service;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Base64;
 import java.util.Properties;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -10,6 +26,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.persistence.NoResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,7 +83,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public boolean signIn(String email, Model model) {
+	public boolean signIn(String email, Model model) throws Exception {
 		if (email != null && !email.isEmpty()) {
 			AdminDto found = findByEmail(email, model);
 			if (found != null) {
@@ -74,7 +91,8 @@ public class AdminServiceImpl implements AdminService {
 				System.out.println(found);
 				String generatedOTP = generateOTP();
 				System.out.println(generatedOTP);
-				boolean updated = repo.updateOtpByEmail(generatedOTP, email);
+			String enc=	encryptPWDAndOTP( generatedOTP, "encrypting");
+				boolean updated = repo.updateOtpByEmail(enc, email);
 				System.out.println(updated);
 				boolean sent = SendOtpToEmail(generatedOTP, email, model);
 				System.out.println(sent);
@@ -133,15 +151,81 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AdminDto otpValidation(String otp, Model model) {
+	public AdminDto findByOtp(String otp, Model model) {
 		try {
-			AdminDto dto = repo.findByOtp(otp);
-			model.addAttribute("IsOTPvalid", "OTP Verified");
-			return dto;
-		} catch (Exception e) {
-			model.addAttribute("IsOTPvalid", "Invalid OTP, Please enter correct OTP");
+			if (otp != null) {
+				AdminDto list = repo.findByOtp(otp);
+				if (list.getOtp().equals(otp)) {
+					return list;
+				} else {
+					model.addAttribute("findotp2", "otp not matched");
+					return null;
+				}
+
+			}
+		} catch (NoResultException e) {
+
+			System.out.println("dto null");
+			model.addAttribute("findotp1", "wrong otp");
 			return null;
 		}
+		model.addAttribute("findotp", "notfound");
+		return null;
+	}
+
+	@Override
+	public String encryptPWDAndOTP(String password, String Secretkey) throws Exception {
+		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+		KeySpec spec = new PBEKeySpec(Secretkey.toCharArray(), Secretkey.getBytes(), 65536, 256);
+		SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
+
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		cipher.init(Cipher.ENCRYPT_MODE, secret);
+		byte[] iv = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
+
+		byte[] encryptedPassword = cipher.doFinal(password.getBytes("UTF-8"));
+		byte[] combined = new byte[iv.length + encryptedPassword.length];
+		System.arraycopy(iv, 0, combined, 0, iv.length);
+		System.arraycopy(encryptedPassword, 0, combined, iv.length, encryptedPassword.length);
+
+		return Base64.getEncoder().encodeToString(combined);
+
+	}
+
+	@Override
+	public String decryptPWDAndOtp(String encryptPwd, String Secretkey) throws NegativeArraySizeException{
+
+		byte[] combined = Base64.getDecoder().decode(encryptPwd);
+
+		byte[] iv = new byte[16];
+		byte[] encrypted = new byte[combined.length - 16];
+		System.arraycopy(combined, 0, iv, 0, 16);
+		System.arraycopy(combined, 16, encrypted, 0, encrypted.length);
+
+		SecretKeyFactory factory;
+		try {
+			factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+
+			KeySpec spec = new PBEKeySpec(Secretkey.toCharArray(), Secretkey.getBytes(), 65536, 256);
+			SecretKey secret;
+
+			secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
+			Cipher cipher;
+
+			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+			cipher.init(Cipher.DECRYPT_MODE, secret, new IvParameterSpec(iv));
+
+			return new String(cipher.doFinal(encrypted), "UTF-8");
+
+		} catch (UnsupportedEncodingException | IllegalBlockSizeException | BadPaddingException
+				| InvalidKeySpecException | NoSuchPaddingException | InvalidKeyException
+				| InvalidAlgorithmParameterException | NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return null;
 
 	}
 

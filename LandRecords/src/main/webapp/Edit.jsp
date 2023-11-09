@@ -40,6 +40,8 @@
 				aria-label="Toggle navigation">
 				<i class="fas fa-bars"></i>
 			</button>
+			
+			<h3>${Admin.adminName}</h3>
 
 			<!-- Collapsible wrapper -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">

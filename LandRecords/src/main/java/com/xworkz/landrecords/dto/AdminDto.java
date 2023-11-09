@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "login_info")
 @Entity
 @NamedQuery(name = "FindByEmail", query = "select dto from AdminDto dto where dto.email=:em")
-@NamedQuery(name = "updateOtpByEmail", query = "update AdminDto dto set dto.otp=:otp where dto.email=:email")
+@NamedQuery(name = "updateOtpByEmail", query = "update AdminDto dto set dto.otp=:otp  where dto.email=:email")
 @NamedQuery(name = "findByOtp", query = "select dto from AdminDto dto where dto.otp=:otp")
 public class AdminDto implements Serializable{
 

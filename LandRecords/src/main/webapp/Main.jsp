@@ -38,10 +38,10 @@ button {
 			<div class="container">
 				<a class="navbar-brand" id="land" href="#">LandRecords</a>
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<a class="navbar-brand" id="adminName"><span
-						style="color: primary;"></span>${dto.adminName}</a>
 				</div>
+				
 			</div>
+			<h3>${Admin.adminName}</h3>
 
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" id="logout"

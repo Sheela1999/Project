@@ -64,6 +64,7 @@
 					style="color: white "href="Index.jsp">Home</a></li>
 				</ul>
 			</div>
+			
 		</div>
 	</nav>
 
@@ -92,6 +93,7 @@
                      </form>
                      <form action="sendOTP" method="post">
 					<div class="form-group">
+					 <input name="email" type="hidden" value="${email1}" >
 						<label for="otp"> </label> <input type="number" name="otp"
 							class="form-control" id="otp" placeholder="Enter OTP">
 					</div>

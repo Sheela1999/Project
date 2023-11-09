@@ -1,9 +1,25 @@
 package com.xworkz.landrecords.service;
 
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Base64;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -30,7 +46,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepo;
 
 	@Override
-	public boolean saveUserDetails(UserDto dto, Model model) {
+	public boolean saveUserDetails(UserDto dto, Model model) throws Exception {
 		if (dto.getMobileNumber() > 999999999) {
 			if (dto.getPassword().equals(dto.getConfirmPassword())) {
 
@@ -38,20 +54,33 @@ public class UserServiceImpl implements UserService {
 				Validator validator = factory.getValidator();
 				Set<ConstraintViolation<UserDto>> violation = validator.validate(dto);
 
+				UserDto exist = mailExists(dto.getEmail());
+				UserDto pwdExist = passwordExists(dto.getPassword());
+
 				if (violation.isEmpty()) {
-					UserDto exist = ifExist(dto.getEmail(), dto.getPassword(), model);
-					if (exist != null) {
-						System.out.println("Your Account Already Exist");
+
+					if (exist == null) {
+						if (pwdExist == null) {
+							String epwd = encryptPWD(dto.getPassword(), "ThisIsSecretKey");
+							System.out.println(epwd);
+							dto.setPassword(epwd);
+							dto.setConfirmPassword(epwd);
+							boolean save = userRepo.saveUserDetails(dto);
+							System.out.println(save);
+							System.out.println("Data Validated");
+							return true;
+						}
+						System.out.println("Your Password is Already Exist");
 						return false;
 					}
 
-					boolean save = userRepo.saveUserDetails(dto);
-					System.out.println(save);
-					System.out.println("Data Validated");
-					return true;
+					System.out.println("Your Email Account Already Exist");
+					return false;
+
 				} else {
 					System.out.println("Data Not Validated");
 					System.out.println(violation);
+
 				}
 			} else {
 				model.addAttribute("ConfirmPassword", "Invalid Password, Check your password");
@@ -65,6 +94,34 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 		return false;
+	}
+
+	@Override
+	public UserDto passwordExists(String password) {
+		try {
+			UserDto pwd = userRepo.passwordExists(password);
+			if (pwd != null) {
+				return pwd;
+			}
+		} catch (Exception e) {
+			System.out.println("Pwd Exception Occured");
+		}
+		return null;
+
+	}
+
+	@Override
+	public UserDto mailExists(String mail) {
+		try {
+			UserDto eml = userRepo.mailExists(mail);
+			if (eml != null) {
+				return eml;
+			}
+		} catch (Exception e) {
+			System.out.println("Email Exception Occured");
+		}
+		return null;
+
 	}
 
 	@Override
@@ -88,9 +145,15 @@ public class UserServiceImpl implements UserService {
 		try {
 			if (email != null) {
 				if (password != null) {
-					UserDto reg = userRepo.ifExist(email, password, model);
+					UserDto reg = mailExists(email);
 					if (reg != null) {
-						return reg;
+						String decrypt = decryptPWD(reg.getPassword(), "ThisIsSecretKey");
+						System.out.println(decrypt);
+						if (decrypt.equals(password)) {
+							return reg;
+						}
+						model.addAttribute("NotMatched", "Password is Not Matched");
+						return null;
 					}
 					model.addAttribute("Account", "Account not Found");
 					return null;
@@ -119,31 +182,33 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean checkotp1(String mail, Model model) {
+	public boolean checkotp1(String mail, Model model) throws Exception {
 		UserDto found = findByMail(mail, model);
 		if (found != null) {
 			String otp = randomotp(4);
 			System.out.println(otp);
+			String encryptedData = encryptPWD(otp, "EncryptOtp");
 
-			boolean up = userRepo.updateOtpByEmail(otp, mail);
+			boolean up = userRepo.updateOtpByEmail(encryptedData, mail);
 			System.out.println(up);
 			boolean sendMail = sendMail1(otp, mail);
 			System.out.println(sendMail);
 			model.addAttribute("otpsent", "OTP sent");
+			return true;
 		}
 		System.out.println("no dto for otp");
 		return false;
 	}
 
 	@Override
-	public UserDto findByOtp1(String otp, Model models) {
+	public UserDto findByOtp1(String otp, Model model) {
 		try {
 			if (otp != null) {
 				UserDto list = userRepo.findByOtp1(otp);
 				if (list.getOtp().equals(otp)) {
 					return list;
 				} else {
-					models.addAttribute("Foundotp", "otp not matched");
+					model.addAttribute("Foundotp", "otp not matched");
 					return null;
 				}
 
@@ -151,10 +216,10 @@ public class UserServiceImpl implements UserService {
 		} catch (NoResultException e) {
 
 			System.out.println("dto null");
-			models.addAttribute("Findotp1", "wrong otp ");
+			model.addAttribute("Findotp1", "wrong otp ");
 			return null;
 		}
-		models.addAttribute("Findotp", "not found");
+		model.addAttribute("Findotp", "not found");
 		return null;
 	}
 
@@ -218,16 +283,76 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean updatePassword(String password, String cPassword, String mail, Model model) {
+	public boolean updatePassword(String password, String confirmPassword, String mail, Model model) throws Exception {
 		if (password != null && password.length() > 7 && password.length() < 16) {
-			if (password.equals(cPassword)) {
-				return userRepo.updatePassword(password, cPassword, mail);
+			UserDto dto = mailExists(mail);
+			if (password.equals(confirmPassword)) {
+				String encrypt = encryptPWD(password, "ThisIsSecretKey");
+				System.out.println(encrypt);
+
+				return userRepo.updatePassword(encrypt, encrypt, mail);
 			}
 			model.addAttribute("Mismatch", "The password and confirm password must be same");
 			return false;
 		}
 		model.addAttribute("Validpwd", "Please give the password minimum length 8 to maximum 15");
 		return false;
+	}
+
+	@Override
+	public String encryptPWD(String password, String Secretkey) throws Exception {
+		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+		KeySpec spec = new PBEKeySpec(Secretkey.toCharArray(), Secretkey.getBytes(), 65536, 256);
+		SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
+
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		cipher.init(Cipher.ENCRYPT_MODE, secret);
+		byte[] iv = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
+
+		byte[] encryptedPassword = cipher.doFinal(password.getBytes("UTF-8"));
+		byte[] combined = new byte[iv.length + encryptedPassword.length];
+		System.arraycopy(iv, 0, combined, 0, iv.length);
+		System.arraycopy(encryptedPassword, 0, combined, iv.length, encryptedPassword.length);
+
+		return Base64.getEncoder().encodeToString(combined);
+
+	}
+
+	@Override
+	public String decryptPWD(String encryptPwd, String Secretkey) {
+
+		byte[] combined = Base64.getDecoder().decode(encryptPwd);
+
+		byte[] iv = new byte[16];
+		byte[] encrypted = new byte[combined.length - 16];
+		System.arraycopy(combined, 0, iv, 0, 16);
+		System.arraycopy(combined, 16, encrypted, 0, encrypted.length);
+
+		SecretKeyFactory factory;
+		try {
+			factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+
+			KeySpec spec = new PBEKeySpec(Secretkey.toCharArray(), Secretkey.getBytes(), 65536, 256);
+			SecretKey secret;
+
+			secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
+			Cipher cipher;
+
+			cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+			cipher.init(Cipher.DECRYPT_MODE, secret, new IvParameterSpec(iv));
+
+			return new String(cipher.doFinal(encrypted), "UTF-8");
+
+		} catch (UnsupportedEncodingException | IllegalBlockSizeException | BadPaddingException
+				| InvalidKeySpecException | NoSuchPaddingException | InvalidKeyException
+				| InvalidAlgorithmParameterException | NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+		return null;
+
 	}
 
 }
