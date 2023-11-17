@@ -61,7 +61,7 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a class="nav-link" id="home"
-					style="color: white "href="Index.jsp">Home</a></li>
+					style="color: white" role="button" href="Index.jsp">HOME</a></li>
 				</ul>
 			</div>
 			

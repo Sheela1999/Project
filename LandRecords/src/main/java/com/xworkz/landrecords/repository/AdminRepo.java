@@ -4,6 +4,8 @@ import com.xworkz.landrecords.dto.AdminDto;
 
 public interface AdminRepo {
 	
+	public boolean saveAdmin(AdminDto dto);
+	
 	public AdminDto findByEmail(String email) throws Exception;
 	
 	public boolean updateOtpByEmail(String otp, String email);

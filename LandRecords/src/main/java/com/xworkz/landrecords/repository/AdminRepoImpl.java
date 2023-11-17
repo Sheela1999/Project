@@ -2,6 +2,7 @@ package com.xworkz.landrecords.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -15,6 +16,17 @@ public class AdminRepoImpl implements AdminRepo{
 	
 	@Autowired
 	private EntityManagerFactory emf;
+	
+	@Override
+	public boolean saveAdmin(AdminDto dto) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		em.persist(dto);
+		transaction.commit();
+		System.out.println("Data is saved");
+		return true;
+	}
 
 	@Override
 	public AdminDto findByEmail(String email) throws Exception{
@@ -57,5 +69,7 @@ public class AdminRepoImpl implements AdminRepo{
 		System.out.println(dto);
 		return dto;
 	}
+
+	
 
 }

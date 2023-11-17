@@ -7,6 +7,8 @@ import com.xworkz.landrecords.dto.AdminDto;
 public interface AdminService {
 
 	public boolean validate(AdminDto dto, Model model);
+	
+	public boolean saveAdminInfo(AdminDto dto,  Model model);
 
 	public AdminDto findByEmail(String email, Model model);
 
@@ -18,8 +20,8 @@ public interface AdminService {
 	
 	public boolean SendOtpToEmail(String otp, String email, Model model);
 	
-	public String encryptPWDAndOTP(String password, String Secretkey) throws Exception;
+	public String encryptOTP(String otp, String Secretkey) throws Exception;
 	
-	public String decryptPWDAndOtp(String encryptPwd, String Secretkey) throws NegativeArraySizeException;
+	public String decryptOtp(String encryptOtp, String Secretkey) throws NegativeArraySizeException;
 
 }

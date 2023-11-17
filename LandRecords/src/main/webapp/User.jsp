@@ -65,14 +65,16 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
         
         <div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" id="home"
-					style="color: white "href="Index.jsp" role="button">Home</a></li>
+					<li class="nav-item"><a class="nav-link"
+					style="color: white" href="Index.jsp" role="button">Home</a></li>
 				</ul>
 			</div>
         <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
         <!-- Collapsible wrapper -->
     </div>
     <!-- Container wrapper -->
@@ -95,9 +97,9 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
 						<h1>Welcome......</h1>
 
 							<br> <a class="btn btn-primary" href="UserSignUp.jsp"
-								role="button">User SignUp </a> &nbsp; &nbsp; <a
-								class="btn btn-primary" href="UserSignIn.jsp" role="button">User
-								SignIn</a>
+								role="button">USER SIGNUP</a> &nbsp; &nbsp; <a
+								class="btn btn-primary" href="UserSignIn.jsp" role="button">USER
+								SIGNIN</a>
 						</div>
 					</div>
 				</div>

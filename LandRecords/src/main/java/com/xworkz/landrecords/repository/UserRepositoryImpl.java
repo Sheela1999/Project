@@ -45,8 +45,8 @@ public class UserRepositoryImpl implements UserRepository {
 	public UserDto passwordExists(String password) {
 		EntityManager em = emf.createEntityManager();
 		Query query = em.createNamedQuery("pwdExists").setParameter("ps", password);
-		UserDto ref1 = (UserDto) query.getSingleResult();
-		return ref1;
+		UserDto pwd = (UserDto) query.getSingleResult();
+		return pwd;
 
 	}
 
@@ -54,8 +54,8 @@ public class UserRepositoryImpl implements UserRepository {
 	public UserDto mailExists(String mail) {
 		EntityManager em = emf.createEntityManager();
 		Query query = em.createNamedQuery("mailExists").setParameter("em", mail);
-		UserDto ref1 = (UserDto) query.getSingleResult();
-		return ref1;
+		UserDto mailExist = (UserDto) query.getSingleResult();
+		return mailExist;
 	}
 
 	@Override

@@ -53,12 +53,24 @@ public class AdminServiceImpl implements AdminService {
 			System.out.println("Email is not valid");
 			valid = false;
 		}
-		if (dto.getOtp() == null || dto.getOtp().length() <= 100000 || dto.getOtp().length() >= 1000000) {
+		if (dto.getOtp() == null || dto.getOtp().length() !=4  ) {
 			model.addAttribute("IsOTPvalid", "Invalid OTP, Please enter correct OTP");
 			System.out.println("Invalid OTP, Please enter correct OTP");
 			valid = false;
 		}
 		return valid;
+	}
+	
+	@Override
+	public boolean saveAdminInfo(AdminDto dto, Model model) {
+		boolean validated = validate(dto, model);
+		if (validated == true) {
+			boolean saved = repo.saveAdmin(dto);
+			System.out.println(saved);
+			return true;
+		}
+		return false;
+		
 	}
 
 	@Override
@@ -91,7 +103,7 @@ public class AdminServiceImpl implements AdminService {
 				System.out.println(found);
 				String generatedOTP = generateOTP();
 				System.out.println(generatedOTP);
-			String enc=	encryptPWDAndOTP( generatedOTP, "encrypting");
+			String enc=	encryptOTP( generatedOTP, "encrypting");
 				boolean updated = repo.updateOtpByEmail(enc, email);
 				System.out.println(updated);
 				boolean sent = SendOtpToEmail(generatedOTP, email, model);
@@ -174,7 +186,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public String encryptPWDAndOTP(String password, String Secretkey) throws Exception {
+	public String encryptOTP(String otp, String Secretkey) throws Exception {
 		SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
 		KeySpec spec = new PBEKeySpec(Secretkey.toCharArray(), Secretkey.getBytes(), 65536, 256);
 		SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
@@ -183,7 +195,7 @@ public class AdminServiceImpl implements AdminService {
 		cipher.init(Cipher.ENCRYPT_MODE, secret);
 		byte[] iv = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
 
-		byte[] encryptedPassword = cipher.doFinal(password.getBytes("UTF-8"));
+		byte[] encryptedPassword = cipher.doFinal(otp.getBytes("UTF-8"));
 		byte[] combined = new byte[iv.length + encryptedPassword.length];
 		System.arraycopy(iv, 0, combined, 0, iv.length);
 		System.arraycopy(encryptedPassword, 0, combined, iv.length, encryptedPassword.length);
@@ -193,9 +205,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public String decryptPWDAndOtp(String encryptPwd, String Secretkey) throws NegativeArraySizeException{
+	public String decryptOtp(String encryptOtp, String Secretkey) throws NegativeArraySizeException{
 
-		byte[] combined = Base64.getDecoder().decode(encryptPwd);
+		byte[] combined = Base64.getDecoder().decode(encryptOtp);
 
 		byte[] iv = new byte[16];
 		byte[] encrypted = new byte[combined.length - 16];

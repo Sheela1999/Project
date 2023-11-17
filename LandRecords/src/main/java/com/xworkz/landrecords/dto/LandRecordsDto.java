@@ -77,6 +77,6 @@ public class LandRecordsDto implements Serializable {
 	@Size(min = 0, max = 10, message = "Year is not valid")
 	private String year;
 	private Boolean status = true; 
-	private byte[] ownerImage;
+	private String ownerImagePath;
 
 }

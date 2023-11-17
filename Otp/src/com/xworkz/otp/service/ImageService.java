@@ -22,8 +22,8 @@ public class ImageService {
 
 	public byte[] getImageById(Long id) {
 		List<ImageEntity> imageEntityOptional = imageRepository.findById(id);
-		if (((Object) imageEntityOptional).isPresent()) {
-			return imageEntityOptional.get().getImageData();
+		if (((Object) imageEntityOptional).equals(id)) {
+			return imageEntityOptional.get(1).getImageData();
 		}
 		return null;
 	}
