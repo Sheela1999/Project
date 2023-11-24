@@ -50,9 +50,11 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <h5 class="pt-1">LandRecord</h5>
         </a>
         <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,11 +62,12 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="User.jsp">SignOut</a>
+                    <a class="nav-link" href="User.jsp" style="padding-left: 1040px;" role="button">LOGOUT</a>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="Index.jsp">HOME</a>
+					</li>
                 
-             </ul>   
-                
+             </ul>        
            
             <!-- Right elements -->
         </div>
@@ -74,16 +77,18 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
 </nav>
 <!-- Navbar -->
 
- 
 <section class="vh-100 bg-image"
   style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-70">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-        <br><br><br>
+        <br><br>
           <div class="card" style="border-radius: 50px;">
             <div class="card-body p-5">
+            
+            <center><h3>  Reset Password </h3></center>
+              <br>
             
              <h5 style="color: green;" align="center">${updated}</h5>
              <h5 style="color: red;" align="center">${mismatch}</h5>
@@ -110,12 +115,12 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                 <div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update Password</button>
                 </div>
-<br><br>
+<br>
               </form>
 
             </div>
           </div>
-      <br><br><br><br>
+      <br><br>
         </div>
       </div>
     </div>

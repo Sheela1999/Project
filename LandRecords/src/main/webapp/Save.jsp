@@ -548,11 +548,10 @@ document.getElementById("hobli").addEventListener("change", function() {
 				<h5 class="pt-1">LandRecord</h5>
 			</a>
 			<!-- Toggle button -->
-			<button class="navbar-toggler" type="button"
-				data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
 			
 			<h3>${Admin.adminName}</h3>
@@ -562,7 +561,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				<!-- Left links -->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-					<li class="nav-item"><a class="nav-link" href="SignIn.jsp">LogOut</a>
+					<li class="nav-item"><a class="nav-link" href="SignIn.jsp" style="padding-left: 1040px;" role="button">LOGOUT</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="Index.jsp">HOME</a>
 					</li>
@@ -949,7 +948,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 		<br>
 	</div>
 
-	<div style="height: 255px"></div>
+	<div style="height: 60px"></div>
 
 <footer class="footer bg-dark text-light py-3">
 		<div class="container">

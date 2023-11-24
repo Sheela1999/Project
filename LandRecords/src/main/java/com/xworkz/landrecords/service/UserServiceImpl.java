@@ -286,6 +286,7 @@ public class UserServiceImpl implements UserService {
 	public boolean updatePassword(String password, String confirmPassword, String mail, Model model) throws Exception {
 		if (password != null && password.length() > 7 && password.length() < 16) {
 			UserDto dto = mailExists(mail);
+			System.out.println(dto);
 			if (password.equals(confirmPassword)) {
 				String encrypt = encryptPWD(password, "ThisIsSecretKey");
 				System.out.println(encrypt);

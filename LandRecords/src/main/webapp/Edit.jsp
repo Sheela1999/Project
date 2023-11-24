@@ -34,11 +34,10 @@
 				<h5 class="pt-1">LandRecord</h5>
 			</a>
 			<!-- Toggle button -->
-			<button class="navbar-toggler" type="button"
-				data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<i class="fas fa-bars"></i>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
 			
 			<h3>${Admin.adminName}</h3>
@@ -48,7 +47,9 @@
 				<!-- Left links -->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-					<li class="nav-item"><a class="nav-link" href="SignIn.jsp">LogOut</a>
+					<li class="nav-item"><a class="nav-link" href="SignIn.jsp" style="padding-left: 1050px">LOGOUT</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="Index.jsp">HOME</a>
 					</li>
 				</ul>
 
@@ -108,7 +109,7 @@
 
 				</div>
 
-				&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+				&nbsp; &nbsp;&nbsp; &nbsp;
 				<div class="col-md-3">
 					<fieldset class="form-group">
 						<label class="form-lbl"> <b>Survey Number</b></label> <input
@@ -124,6 +125,26 @@
 			<center><button type="submit" class="btn btn-primary">Edit</button></center>
 		</form>
 	</div>
+	
+	<div style="height: 155px"></div>
+	
+	<footer class="footer bg-dark text-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<p>
+						<a href="sheela.xworkz@gmail.com">&copy; 2023 LandRecorder.
+							All rights reserved.</a>
+					</p>
+				</div>
+				<div class="col-md-6 text-right">
+					<p>
+						<a href="#" id="privacy">Privacy Policy</a> | <a href="#" id="terms">Terms of Service</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>

@@ -48,9 +48,11 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <h5 class="pt-1">LandRecord</h5>
         </a>
         <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -58,11 +60,12 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="User.jsp">SignOut</a>
+                    <a class="nav-link" href="User.jsp" style="padding-left: 1040px">LOGOUT</a>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="Index.jsp">HOME</a>
+					</li>
                 
-             </ul>   
-                
+             </ul>                 
            
             <!-- Right elements -->
         </div>
@@ -79,14 +82,15 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-70">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-        <br><br><br>
+        <br><br>
           <div class="card" style="border-radius: 50px;">
             <div class="card-body p-5">
             
              <h5 style="color: green;" align="center">${Login}</h5>
              <h5 style="color: red;" align="center">${Accont}</h5>
             
-              <h1>  OTP SENDING </h1> 
+              <center><h3>  Forgot Password </h3></center>
+              <br>
 
 			<h6 style="color: green;">${Checking}</h6>
 			<h6 style="color: red;">${Foundotp}</h6>
@@ -99,7 +103,7 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
                   <input type="email" id="form3Example3cg" class="form-control form-control-lg" name="email" placeholder="Enter Your Email" required/>                 
                 </div>
                 <h5 style="color: red;">${Email}</h5>
- 				 	 <p> <a href="ForgetPwd.jsp">Resend OTP</a></p>
+ 				 	 <p align="right"> <a href="ForgetPwd.jsp">Resend OTP</a></p>
 					<div class="d-flex justify-content-center">
                   <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Send OTP</button>
                 </div>
@@ -116,10 +120,11 @@ background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244
  				 	 
 					<button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Submit</button>
 				</form>	
+				<br>
 				
 			</div>
 		</div>
-		 <br><br><br><br>
+		 <br><br>
 		 	 
 		<!-- //copyright -->
 		 

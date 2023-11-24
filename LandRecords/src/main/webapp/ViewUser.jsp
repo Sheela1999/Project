@@ -7,12 +7,44 @@
 <meta charset="ISO-8859-1">
 <title>View User Details</title>
 
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+ <style type="text/css">
+   
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+   
+  body {
+  background-image: url("https://images.pexels.com/photos/5806539/pexels-photo-5806539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  /*   height: 100vh; */
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+   
+   </style>
 
 <script type="text/javascript">
 
@@ -541,46 +573,24 @@ document.getElementById("hobli").addEventListener("change", function() {
 </script>  
 
 </head>
-<body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-        <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-            <h5 class="pt-1">LandRecord</h5>
-        </a>
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
+<body style="background-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB3Xi1bsw9BOR_SDNX1gKvVSP23g87W-f_Sg&usqp=CAU">
 
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="SignIn.jsp">LogOut</a>
-                </li>
-            </ul>
-            <!-- Left links -->
-
-            <!-- Right elements -->
-            <div class="d-flex align-items-center justify-content-start">
-                <!-- Icon -->
-                <a class="text-reset me-3" href="#">
-                    <i class="fas fa-shopping-cart text-white"></i>
-                </a>
-           
-            </div>
-            <!-- Right elements -->
-        </div>
-        <!-- Collapsible wrapper -->
+<nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">LandRecords</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+          <li class="nav-item">
+          <a class="nav-link text-white" href="Index.jsp">Home</a>
+        </li>
+      </ul>
     </div>
-    <!-- Container wrapper -->
+  </div>
 </nav>
-<!-- Navbar -->
+
 <div class="container">
 			
 			<br>
@@ -900,7 +910,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
-						<button type="submit" class="form-control btn btn-primary">Go</button>
+						<button type="submit" class="form-control btn btn-warning">Go</button>
 				</div>
 			</div>
 
@@ -962,29 +972,19 @@ document.getElementById("hobli").addEventListener("change", function() {
 	</div>
 	</div></center>
 	
-	<div style="height: 255px"></div>
+	<div style="height: 200px"></div>
 
-	<footer class="footer bg-dark text-light py-3">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<p>
-						<a href="sheela.xworkz@gmail.com">&copy; 2023 LandRecorder.
-							All rights reserved.</a>
-					</p>
-				</div>
-				<div class="col-md-6 text-right">
-					<p>
-						<a href="#" id="privacy">Privacy Policy</a> | <a href="#"
-							id="terms">Terms of Service</a>
-					</p>
-				</div>
-			</div>
+	<footer class="bg-primary text-center text-white fixed-bottom">
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: #343a40;">
+			© 2023 Copyright: <a class="text-white"
+				href="sheela.xworkz@gmail.com">LandRecords</a>
 		</div>
+		<!-- Copyright -->
 	</footer>
-	
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Footer -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	
 	<script>
 	

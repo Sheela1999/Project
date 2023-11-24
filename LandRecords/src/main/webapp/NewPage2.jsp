@@ -104,7 +104,9 @@ body::before {
 </nav>
 
 	<div id="wrapper">
-		<div class="container" style="text-align: center">
+		<div class="container">
+
+			<div class="container" style="text-align: center">
 
 				<a class="btn btn-warning" href="UserSignUp.jsp" role="button"
 					style="font-weight: bold; color: white; background-color: rgb(255 255 0/ 60%);">USER
@@ -115,6 +117,7 @@ body::before {
 			</div>
 
 		</div>
+	</div>
 
 	<footer class="bg-primary text-center text-white fixed-bottom">
 		<!-- Copyright -->

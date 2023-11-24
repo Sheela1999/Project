@@ -22,17 +22,6 @@
 	crossorigin="anonymous">
 	
 	<style type="text/css">
-#land {
-	color: white;
-}
-
-#admin {
-	color: white;
-}
-
-#user {
-	color: white;
-}
 
 #privacy {
       margin-left: 300px;
@@ -43,8 +32,8 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-		<div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container-fluid">
 			<a class="navbar-brand mt-2 mt-lg-0" href="#">
 				<h5 class="pt-1"  style="color: white;">LandRecord</h5>
 			</a>
@@ -53,11 +42,12 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" id="admin"
+					<li class="nav-item"><a class="nav-link"
 						href="SignIn.jsp" role="button">ADMIN</a></li>
-					<li class="nav-item"><a class="nav-link" id="user"
+					<li class="nav-item"><a class="nav-link"
 						href="User.jsp" role="button">USER</a></li>
 				</ul>
 			</div>
@@ -71,7 +61,7 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-	<div style="height: 523px"></div>
+	<div style="height: 517px"></div>
 	
 	<footer class="footer bg-dark text-light py-3">
 		<div class="container">

@@ -3,7 +3,6 @@ package com.xworkz.landrecords.service;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.NoResultException;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;

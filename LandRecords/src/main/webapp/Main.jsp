@@ -21,26 +21,6 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
 
-<style type="text/css">
-#land {
-	color: white;
-}
-
-#adminName {
-	color: white;
-	padding-left: 900px;
-}
-
-#logout {
-	color: white;
-	padding-left: 500px;
-}
-
-button {
-	margin-left: 500px;
-}
-</style>
-
 </head>
 <body>
 
@@ -58,14 +38,14 @@ button {
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
-			<h3 style="color: white; padding-left: 1000px;" >${Admin.adminName}</h3>
+			<h3 style="color: white; padding-left: 950px;">${Admin.adminName}</h3>
 
 			<!-- Collapsible wrapper -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<!-- Left links -->
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-					<li class="nav-item"><a class="nav-link" href="SignIn.jsp" role="button">LogOut</a>
+					<li class="nav-item"><a class="nav-link" href="SignIn.jsp" role="button" style="padding-left: 20px;">LOGOUT</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="Index.jsp">HOME</a>
 					</li>
@@ -78,6 +58,13 @@ button {
 		<!-- Container wrapper -->
 	</nav>
 	
+	<!-- Add Bootstrap JS (Popper.js and jQuery are required) -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
 	<img alt="image" src="${Admin.adminImagePath}">
 
 	<div style="height: 100px"></div>
@@ -89,7 +76,7 @@ button {
 			role="button">View Records</a>
 	</div>
 
-	<div style="height: 355px"></div>
+	<div style="height: 329px"></div>
 
 	<footer class="footer bg-dark text-light py-3">
 		<div class="container">
