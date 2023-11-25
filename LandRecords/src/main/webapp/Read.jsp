@@ -22,6 +22,59 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+   <style type="text/css">
+   
+   @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+   
+   body {
+  background-image: url("https://images.pexels.com/photos/5806539/pexels-photo-5806539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  /*   height: 100vh; */
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* overlay */
+body::before {
+  position: absolute;
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  margin: auto;
+}
+
+@media screen and (max-width: 715px) {
+  body,
+  body::before {
+    height: 1200px;
+  }
+   
+</style>
+   
  <script type="text/javascript">
 
 function populateDropdowns() {
@@ -552,50 +605,35 @@ document.getElementById("hobli").addEventListener("change", function() {
  
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-        <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-            <h5 class="pt-1">LandRecord</h5>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNav" aria-controls="navbarNav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-        
-        <h3>${Admin.adminName}</h3>
-
-        <!-- Collapsible wrapper -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="SignIn.jsp" style="padding-left: 1040px;" role="button">LOGOUT</a>
+<nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#" style="padding-right: 10px;">LandRecords</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      <li class="nav-item">
+                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button">LOGOUT</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="Index.jsp">HOME</a>
-					</li>
-            </ul>
-        
-        </div>
-        <!-- Collapsible wrapper -->
+          <li class="nav-item">
+          <a class="nav-link text-white" href="User.jsp">HOME</a>
+        </li>
+      </ul>
     </div>
-    <!-- Container wrapper -->
+  </div>
 </nav>
-<!-- Navbar -->
+
+<div id="wrapper">
 <div class="container">
 			
-			<br>
-			<h1 align="center">Land Records</h1> 
+			<h1 align="center"><b style="color: white;">Land Records</b></h1> 
 			<br> 
 			<form class="search" action="check" method="post">
 			<div class="form-row">
 				<div class="col">
 
-					<label class="form-lbl">State</label> <select class="form-control"
+					<label class="form-lbl"><b style="color: white;">State</b></label> <select class="form-control"
 						id="state" name="state" onchange="populateDropdowns()" required>
 						<option value="">SELECT A STATE</option>
 						<option value="KARNATAKA">KARNATAKA</option>
@@ -605,7 +643,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 				<div class="col">
 
-					<label for="district" class="form-lbl">District</label> <select
+					<label for="district" class="form-lbl"><b style="color: white;">District</b></label> <select
 						id="district" class="form-control" name="district" required>
 						<option value="">SELECT A DISTRICT</option>
 						
@@ -619,7 +657,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 				<div class="col">
 
-					<label for="taluk" class="form-lbl">Taluk</label> <select
+					<label for="taluk" class="form-lbl"><b style="color: white;">Taluk</b></label> <select
 						id="taluk" class="form-control" name="taluk" required>
 						<option value="">SELECT A TALUK</option>
 						
@@ -649,7 +687,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				<div class="col">
 
-					<label class="form-lbl" for="hobli"> Hobli</label> <select
+					<label class="form-lbl" for="hobli"><b style="color: white;">Hobli</b></label> <select
 						class="form-control" name="hobli" id="hobli" required>
 						<option value="">SELECT A HOBLI</option>
 						
@@ -715,7 +753,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 				<div class="col">
 
-					<label class="form-lbl" for="village">Village</label> <select
+					<label class="form-lbl" for="village"><b style="color: white;">Village</b></label> <select
 						class="form-control select2" name="village" id="village" required>
 						<option value="">SELECT A VILLAGE</option>
 						
@@ -908,12 +946,11 @@ document.getElementById("hobli").addEventListener("change", function() {
 				&nbsp;&nbsp;
 				<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
-						<button type="submit" class="form-control btn btn-primary">Go</button>
+						<button type="submit" class="form-control btn btn-warning"><b style="color: white;">Go</b></button>
 				</div>
 			</div>
 
 		</form>
-			</div>
 		
 			<br>
 			  <table class="table">
@@ -942,13 +979,13 @@ document.getElementById("hobli").addEventListener("change", function() {
 <td>${list.hissaNumber}</td>
 <td>${list.surveyNumber}</td>
 <td>${list.year}</td>
-<td><a class="btn btn-primary" href="updateRecords?hissaNumber=${list.hissaNumber}&surveyNumber=${list.surveyNumber}" role="button" style="padding-right: 25px; padding-left: 25px"> Edit</a>
+<td><a class="btn btn-warning" href="updateRecords?hissaNumber=${list.hissaNumber}&surveyNumber=${list.surveyNumber}" role="button" style="padding-right: 25px; padding-left: 25px"> Edit</a>
  </td>
 <td> 
 			<form action="remove" method="post">
 			<input type="hidden" name="hissaNumber" value="${list.hissaNumber}">
 			<input type="hidden" name="surveyNumber" value="${list.surveyNumber}">
-			<button type="submit" class="btn btn-primary">Delete</button>
+			<button type="submit" class="btn btn-warning">Delete</button>
 			</form>
 			 </td>
 
@@ -962,26 +999,20 @@ document.getElementById("hobli").addEventListener("change", function() {
 <h5 style="color: red">${NotFound}</h5>
 <h5 style="color: green">${delete}</h5>
 
-	<div style="height: 255px"></div>
+   </div>
+</div>
 
-	<footer class="footer bg-dark text-light py-3">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<p>
-						<a href="sheela.xworkz@gmail.com">&copy; 2023 LandRecorder.
-							All rights reserved.</a>
-					</p>
-				</div>
-				<div class="col-md-6 text-right">
-					<p>
-						<a href="#" id="privacy">Privacy Policy</a> | <a href="#"
-							id="terms">Terms of Service</a>
-					</p>
-				</div>
-			</div>
+	<footer class="bg-primary text-center text-white fixed-bottom">
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: #343a40;">
+			© 2023 Copyright: <a class="text-white"
+				href="sheela.xworkz@gmail.com">LandRecords</a>
 		</div>
+		<!-- Copyright -->
 	</footer>
+	<!-- Footer -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

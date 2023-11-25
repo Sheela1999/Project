@@ -43,7 +43,7 @@ hr {
 }
 
 body {
-  background-image: url("https://images.pexels.com/photos/5806539/pexels-photo-5806539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://w0.peakpx.com/wallpaper/25/589/HD-wallpaper-farming-land-nature-fields-country-rural-pretty-farming-vistas-graphy-green-u-air-paddies-aerial.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -172,9 +172,9 @@ label:not(label:last-child) {
 </style>
 </head>
 
-<body style="background-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB3Xi1bsw9BOR_SDNX1gKvVSP23g87W-f_Sg&usqp=CAU">
+<body>
 
-<nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#6f42c1 ">
+<nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
   <div class="container-fluid">
     <a class="navbar-brand text-white" href="#">LandRecords</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -183,7 +183,7 @@ label:not(label:last-child) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link text-white" href="Index.jsp">Home</a>
+          <a class="nav-link text-white" href="User.jsp">HOME</a>
         </li>
       </ul>
     </div>
@@ -218,6 +218,7 @@ label:not(label:last-child) {
           <input type="checkbox" id="checkbox" required>
           <label for="checkbox">Remember Me</label>
         </div>
+         
         <button type="submit" class="button">LOGIN</button>
         <p> <a class="to" href="ForgetPwd.jsp">Forgot Password?</a></p>
         <hr>

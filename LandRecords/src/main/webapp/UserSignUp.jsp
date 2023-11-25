@@ -172,7 +172,7 @@ label:not(label:last-child) {
 </style>
 </head>
 
-<body style="background-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB3Xi1bsw9BOR_SDNX1gKvVSP23g87W-f_Sg&usqp=CAU">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
   <div class="container-fluid">
@@ -183,7 +183,7 @@ label:not(label:last-child) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link text-white" href="Index.jsp">Home</a>
+          <a class="nav-link text-white" href="User.jsp">HOME</a>
         </li>
       </ul>
     </div>

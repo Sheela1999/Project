@@ -7,10 +7,6 @@
 <meta charset="ISO-8859-1">
 <title>View User Details</title>
 
-<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -20,7 +16,7 @@
    
  <style type="text/css">
    
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+   @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 *,
 *::before,
@@ -30,8 +26,8 @@
   box-sizing: border-box;
 }
    
-  body {
-  background-image: url("https://images.pexels.com/photos/5806539/pexels-photo-5806539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+   body {
+  background-image: url("https://img.freepik.com/premium-photo/photo-from-drone-rice-harvesting-by-local-farmers_247622-22493.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -43,8 +39,32 @@
   position: relative;
   overflow-x: hidden;
 }
+
+/* overlay */
+body::before {
+  position: absolute;
+  content: "";
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  margin: auto;
+}
+
+@media screen and (max-width: 715px) {
+  body,
+  body::before {
+    height: 1200px;
+  }
    
-   </style>
+</style>
 
 <script type="text/javascript">
 
@@ -573,37 +593,41 @@ document.getElementById("hobli").addEventListener("change", function() {
 </script>  
 
 </head>
-<body style="background-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB3Xi1bsw9BOR_SDNX1gKvVSP23g87W-f_Sg&usqp=CAU">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#">LandRecords</a>
+    <a class="navbar-brand text-white" href="#" style="padding-right: 10px;">LandRecords</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+      <li class="nav-item">
+                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button">LOGOUT</a>
+                </li>
           <li class="nav-item">
-          <a class="nav-link text-white" href="Index.jsp">Home</a>
+          <a class="nav-link text-white" href="User.jsp">HOME</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
+<div id="wrapper">
 <div class="container">
 			
+			<h5 style="color: red;">${Read}</h5>
+			<h5 style="color: red">${Reading}</h5>
+
+			<h1 align="center"><b style="color: white;">Land Records</b></h1>
 			<br>
-			<h1 align="center">Land Records</h1> 
-				<h5 style="color: red">${Read}</h5>
-				<h5 style="color: red">${Reading}</h5>
-			
 			<br> 
 			<form class="view" action="userView" method="post">
 			<div class="form-row">
 				<div class="col">
 
-					<label class="form-lbl">State</label> <select class="form-control"
+					<label class="form-lbl"><b style="color: white;">State</b></label> <select class="form-control"
 						id="state" name="state" onchange="populateDropdowns()" required>
 						<option value="">SELECT A STATE</option>
 						<option value="KARNATAKA">KARNATAKA</option>
@@ -613,7 +637,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 				<div class="col">
 
-					<label for="district" class="form-lbl">District</label> <select
+					<label for="district" class="form-lbl"><b style="color: white;">District</b></label> <select
 						id="district" class="form-control" name="district" required>
 
 						<option value="">SELECT A DISTRICT</option>
@@ -627,7 +651,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 				<div class="col">
 
-					<label for="taluk" class="form-lbl">Taluk</label> <select
+					<label for="taluk" class="form-lbl"><b style="color: white;">Taluk</b></label> <select
 						id="taluk" class="form-control" name="taluk" required>
 						<option value="">SELECT A TALUK</option>
 						<option value="HOSANAGARA">HOSANAGARA</option>
@@ -656,7 +680,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				<div class="col">
 
-					<label class="form-lbl" for="hobli"> Hobli</label> <select
+					<label class="form-lbl" for="hobli"><b style="color: white;">Hobli</b></label> <select
 						class="form-control" name="hobli" id="hobli" required>
 						<option value="">SELECT A HOBLI</option>
 						
@@ -721,7 +745,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 				<div class="col">
 
-					<label class="form-lbl" for="village">Village</label> <select
+					<label class="form-lbl" for="village"><b style="color: white;">Village</b></label> <select
 						class="form-control select2" name="village" id="village" required>
 						<option value="">SELECT A VILLAGE</option>
 						<option value="AMRUTA">AMRUTA</option>
@@ -910,7 +934,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
-						<button type="submit" class="form-control btn btn-warning">Go</button>
+						<button type="submit" class="form-control btn btn-warning"><b style="color: white;">Go</b></button>
 				</div>
 			</div>
 
@@ -926,7 +950,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 		
 		<div class="col-md-3" style="width: 140px">
 					<fieldset class="form-group">
-						<label class="form-lbl">Survey Number</label> 
+						<label class="form-lbl"><b style="color: white;">Survey Number</b></label> 
 						<select name="surveyNumber" class="form-control" id="surveyNumber">
 						<option value="">SELECT A SURVEY NUMBER</option>
 						<c:forEach var="list" items="${view}">
@@ -938,7 +962,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				<div class="col-md-3" style="width: 140px">
 					<fieldset class="form-group">
-						<label class="form-lbl">Hissa Number</label> 
+						<label class="form-lbl"><b style="color: white;">Hissa Number</b></label> 
 						<select name="hissaNumber" class="form-control" id="hissaNumber">
 						<option value="">SELECT A HISSA NUMBER</option>
 						<c:forEach var="list" items="${view}">
@@ -950,30 +974,15 @@ document.getElementById("hobli").addEventListener("change", function() {
 					
 					<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
-						<button type="submit" class="form-control btn btn-primary">Go</button>
+						<button type="submit" class="form-control btn btn-warning"><b style="color: white;">Go</b></button>
 				</div>
 			</div>
 		
 		</form>
-		<br>
-		<center><div class="col-md-2">
-						<button type="button" class="form-control btn btn-primary" id="showCard" style="align-items: center;">View Records</button>
-				</div></center>
+		
 	</div>
-	<br>
-	
-	<center><div class="card" id="myCard" style="display: none;">
-	<div class="card-body">
-	<h5 class="card-title">LAND OWNER DETAILS</h5>
-	<h6 class="card-subtitle mb-2 text-muted">OWNER NAME: ${read.ownerName}</h6>
-	<h6 class="card-subtitle mb-2 text-muted">AADHAR NUMBER: ${read.aadharNumber}</h6>
-	<h6 class="card-subtitle mb-2 text-muted">MOBILE NUMBER: ${read.mobileNumber}</h6>
-	<h6 class="card-subtitle mb-2 text-muted">YEAR OF REGISTERATION: ${read.year}</h6>
 	</div>
-	</div></center>
 	
-	<div style="height: 200px"></div>
-
 	<footer class="bg-primary text-center text-white fixed-bottom">
 		<!-- Copyright -->
 		<div class="text-center p-3" style="background-color: #343a40;">
