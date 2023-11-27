@@ -165,7 +165,7 @@ label:not(label:last-child) {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    
   }
 }
 
@@ -182,11 +182,8 @@ label:not(label:last-child) {
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-      <li class="nav-item">
-                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button">LOGOUT</a>
-                </li>
   
-                <li class="nav-item"><a class="nav-link text-white" href="Index.jsp">HOME</a>
+                <li class="nav-item"><a class="nav-link text-white" href="Index.jsp" style="padding-left: 1100px">HOME</a>
 					</li>
       </ul>
     </div>
@@ -197,14 +194,14 @@ label:not(label:last-child) {
     <div class="container">
        <div class="box">
             
-             <h5 style="color: green;" align="center">${Login}</h5>
+             <h5 style="color: orange;" align="center">${Login}</h5>
              <h5 style="color: red;" align="center">${Accont}</h5>
              
              <form id="forgotpwd" action="forget" method="post">
             
               <center><h2 class="title">Forgot Password</h2></center>
 
-			<h6 style="color: green;">${Checking}</h6>
+			<h6 style="color: orange;">${Checking}</h6>
 			<h6 style="color: red;">${Foundotp}</h6>
 			<h6 style="color: red;">${Findotp1}</h6>
 			<h6 style="color: red;">${Findotp}</h6>
@@ -226,7 +223,7 @@ label:not(label:last-child) {
                   <label for="otp">OTP</label>
                   <input type="number" name="otp" id="otp" placeholder="Enter OTP" required />
                   </div>
-                <h6 style="color: green;">${otpsent}</h6>
+                <h6 style="color: orange;">${otpsent}</h6>
  				 	 
 				<button type="submit" class="button">Submit</button>
 				</form>	

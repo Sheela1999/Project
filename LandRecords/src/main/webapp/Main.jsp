@@ -78,7 +78,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    
   }
 }
 
@@ -93,6 +93,9 @@ body::before {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item">

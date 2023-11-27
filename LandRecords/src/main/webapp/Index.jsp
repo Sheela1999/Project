@@ -61,7 +61,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+   
   }
 }
 
@@ -79,7 +79,7 @@ body::before {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link text-white" href="SignIn.jsp">ADMIN</a>
+          <a class="nav-link text-white" href="SignIn.jsp" style="padding-left: 1050px">ADMIN</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="User.jsp">USER</a>

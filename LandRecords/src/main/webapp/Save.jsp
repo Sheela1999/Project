@@ -45,14 +45,14 @@
 body::before {
   position: absolute;
   content: "";
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #wrapper {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
@@ -62,7 +62,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+   height: 1200px;
   }
    
 </style>
@@ -597,10 +597,13 @@ document.getElementById("hobli").addEventListener("change", function() {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
-                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button">LOGOUT</a>
+                    <a class="nav-link text-white" href="UserSignIn.jsp">LOGOUT</a>
                 </li>
           <li class="nav-item">
           <a class="nav-link text-white" href="User.jsp">HOME</a>
@@ -613,7 +616,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 <div id="wrapper">
 	<div class="container">
 
-		<h5 style="color: red;">${Saved}</h5>
+		<h5 style="color: orange;">${Saved}</h5>
 		<h5 style="color: red;">${Exist}</h5>
 		
 		<h1 align="center"><b style="color: white;">Land Records</b></h1>
@@ -979,6 +982,12 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 
 			</div>
+			<div class="col-md-3" style="padding-left: 4px;">
+		 				<div class="form-group view-password">  
+                            <label class="form-lbl" style="font-size: large;"><b style="color: white;">Image</b></label> 
+                            	<input type="file" name="image" class="form-control" id="" placeholder="">
+                         </div>
+            </div>
 			<br>
 			<center><button type="submit" class="btn btn-warning" 
 			style="padding-right: 40px; padding-left: 40px"><b style="color: white;">save</b></button></center>

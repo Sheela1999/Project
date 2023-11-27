@@ -165,7 +165,7 @@ label:not(label:last-child) {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    
   }
 }
 
@@ -183,7 +183,7 @@ label:not(label:last-child) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link text-white" href="User.jsp">HOME</a>
+          <a class="nav-link text-white" href="User.jsp" style="padding-left: 1100px">HOME</a>
         </li>
       </ul>
     </div>
@@ -215,12 +215,11 @@ label:not(label:last-child) {
         <h5 style="color: red;">${Password}</h5>
         
         <div class="field">
-          <input type="checkbox" id="checkbox" required>
-          <label for="checkbox">Remember Me</label>
+          <p> <a class="to" href="ForgetPwd.jsp" style="color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));">Forgot Password?</a></p>
         </div>
          
         <button type="submit" class="button">LOGIN</button>
-        <p> <a class="to" href="ForgetPwd.jsp">Forgot Password?</a></p>
+        
         <hr>
         <div class="foot">
           <p class="info">Already have an account? <a href="UserSignUp.jsp"

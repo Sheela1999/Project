@@ -70,7 +70,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    
   }
    
 </style>
@@ -611,6 +611,9 @@ document.getElementById("hobli").addEventListener("change", function() {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
@@ -943,7 +946,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 				</div>
 
-				&nbsp;&nbsp;
 				<div class="col-md-3" style="padding-right: 100px; padding-left: 100px">
 						<label class="form-lbl"> . </label>
 						<button type="submit" class="form-control btn btn-warning"><b style="color: white;">Go</b></button>
@@ -971,7 +973,7 @@ document.getElementById("hobli").addEventListener("change", function() {
   
   <tbody>     
   <c:forEach var="list" items="${found}">
-<tr>
+<tr style="color: white;">
  
 <td>${list.ownerName}</td>
 <td>${list.mobileNumber}</td>
@@ -997,7 +999,7 @@ document.getElementById("hobli").addEventListener("change", function() {
   </tbody>
 </table>
 <h5 style="color: red">${NotFound}</h5>
-<h5 style="color: green">${delete}</h5>
+<h5 style="color: orange">${delete}</h5>
 
    </div>
 </div>

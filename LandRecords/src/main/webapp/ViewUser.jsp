@@ -61,7 +61,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    height: 750px;
   }
    
 </style>
@@ -604,7 +604,7 @@ document.getElementById("hobli").addEventListener("change", function() {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
-                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button">LOGOUT</a>
+                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button" style="padding-left: 1000px">LOGOUT</a>
                 </li>
           <li class="nav-item">
           <a class="nav-link text-white" href="User.jsp">HOME</a>

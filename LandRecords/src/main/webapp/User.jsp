@@ -78,7 +78,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    
   }
 }
 
@@ -96,7 +96,7 @@ body::before {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
           <li class="nav-item">
-          <a class="nav-link text-white" href="Index.jsp">HOME</a>
+          <a class="nav-link text-white" href="Index.jsp" style="padding-left: 1100px">HOME</a>
         </li>
       </ul>
     </div>

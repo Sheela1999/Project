@@ -69,7 +69,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-    height: 1200px;
+    height: 950px;
   }
    
 </style>
@@ -83,6 +83,9 @@ body::before {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
@@ -100,7 +103,7 @@ body::before {
 	<div class="container">
 
 		<h1 align="center"><b style="color: white;">Land Records</b></h1>
-		<h5 style="color: green">${Edited}</h5>
+		<h5 style="color: orange">${Edited}</h5>
 		<br> 
 		<br>
 		<form class="form" action="edit" method="post">
