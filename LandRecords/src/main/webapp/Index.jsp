@@ -45,18 +45,32 @@ body::before {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.button {
-  width: 100%;
-  padding: 10px;
-  font-size: 20px;
-  border-radius: 5px;
-  border: none;
-  margin: 15px 0 0;
-  cursor: pointer;
-  background-color: rgb(255 255 0 / 60%);
-  color: white;
-  font-weight: bold;
+.logo img {
+  position : relative;
+  max-height: 150px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 30px;
 }
+
+.centered-text {
+    position: absolute;
+    top: 27%;
+    left: 27%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+  }
+
+.word {
+    position : relative;
+    font-weight: bold;
+    color: aqua;
+    text-align: center;
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+  }
 
 @media screen and (max-width: 715px) {
   body,
@@ -89,7 +103,46 @@ body::before {
     </div>
   </div>
 </nav>
-	
+
+<div class="logo">
+<img src="https://landconversion.karnataka.gov.in/rd/assets/img/bhoomi/karnataka.png">
+</div>
+
+<div class="centered-text">
+<h3>Government of Karnataka</h3>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="land">
+<h1 align="center">
+    <span class="word">WELCOME</span>
+    <span class="word">TO</span>
+    <span class="word">KARNATAKA</span>
+    <span class="word">LAND</span>
+    <span class="word">RECORDS</span>
+  </h1>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const words = document.querySelectorAll('.word');
+
+      function animateWords(index) {
+        if (index < words.length) {
+          words[index].style.opacity = 1;
+          setTimeout(() => {
+            animateWords(index + 1);
+          }, 500); // Adjust the delay between words (in milliseconds)
+        }
+      }
+
+      animateWords(0);
+    });
+  </script>
+      
 	<footer class="bg-primary text-center text-white fixed-bottom">
 		<!-- Copyright -->
 		<div class="text-center p-3" style="background-color: #343a40;">

@@ -189,12 +189,12 @@ public class LandRecordController {
 	}
 
 	@RequestMapping(value = "/userCard", method = RequestMethod.POST)
-	public String userView(@RequestParam Integer hissaNumber, @RequestParam Integer surveyNumber, Model model) {
+	public String userView(@RequestParam Integer hissaNumber, @RequestParam Integer surveyNumber, Model model, HttpSession session) {
 		LandRecordsDto data = service.ifExists(hissaNumber, surveyNumber, model);
 		if (data != null) {
-			model.addAttribute("read", data);
+			session.setAttribute("read", data);
 			System.out.println("Data is Present");
-			return "ViewUser";
+			return "UserViewCard";
 		}
 		model.addAttribute("Reading", "No Records found");
 		return "ViewUser";

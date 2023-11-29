@@ -195,7 +195,7 @@ label:not(label:last-child) {
     <div class="box">
       <form id="signup" action="saveUserRecords" method="post">
       
-              <h5 style="color: green;" align="center">${Registration}</h5>
+              <h5 style="color: orange;" align="center">${Registration}</h5>
               <h5 style="color: red;" align="center">${NotRegistration}</h5>
               <h5 style="color: red;" align="center">${Exist}</h5>
               

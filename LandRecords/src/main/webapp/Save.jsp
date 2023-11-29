@@ -45,14 +45,14 @@
 body::before {
   position: absolute;
   content: "";
-  height: 120vh;
+  height: 110vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #wrapper {
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
@@ -62,7 +62,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-   height: 1200px;
+   height: 1800px;
   }
    
 </style>
@@ -593,12 +593,12 @@ document.getElementById("hobli").addEventListener("change", function() {
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#" style="padding-right: 10px;">LandRecords</a>
+    <a class="navbar-brand text-white" href="#">LandRecords</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    <h5 style="color: white; padding-left: 930px;">${Admin.adminName}</h5>
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -618,7 +618,6 @@ document.getElementById("hobli").addEventListener("change", function() {
 
 		<h5 style="color: orange;">${Saved}</h5>
 		<h5 style="color: red;">${Exist}</h5>
-		
 		<h1 align="center"><b style="color: white;">Land Records</b></h1>
 		<br>
 		<br>
@@ -626,43 +625,50 @@ document.getElementById("hobli").addEventListener("change", function() {
 		<form class="form" action="save" method="post">
 			<div class="row">
 
-				<div class="col-md-3" style="padding-right: 1px">
+				<div class="col-md-3">
+				   <fieldset class="form-group">
 					<label class="form-lbl" style="font-size: large;" ><b style="color: white;">Owner Name</b></label> 
 					<input type="text" name="ownerName" class="form-control" id="" placeholder="" required>
+					</fieldset>
 				</div>
 
-				<div class="col-md-3" style="padding-left: 10px; padding-right: 2px">
+				<div class="col-md-3">
+				    <fieldset class="form-group">
 					<label class="form-lbl" style="font-size: large;"><b style="color: white;">Mobile Number</b></label> 
 					<input type="number" name="mobileNumber" class="form-control" id="" placeholder="" required>
+					</fieldset>
 				</div>
 
-				<div class="col-md-3" style="padding-left: 5px; padding-right: 4px">
+				<div class="col-md-3">
 					<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"><b style="color: white;">Aadhar Number</b></label> 
 					    <input type="number" name="aadharNumber" class="form-control" id="" placeholder="" required>
 					</fieldset>
 				</div>
 
-				<div class="col-md-3" style="padding-left: 4px;">
+				<div class="col-md-3">
+				<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"> <b style="color: white;">Year</b></label>
 						<input type="number" name="year" class="form-control" id="" placeholder="" required>
+						</fieldset>
 				</div>
 			</div>
 
 			<div class="form-row">
 				<div class="col-md-3">
-
+                   <fieldset class="form-group">
 					<label class="form-lbl"><b style="color: white;">State</b></label> <select
-						class="form-control" id="state" name="state" onchange="populateDropdowns()" required>
+						class="form-control select2" id="state" name="state" onchange="populateDropdowns()" required>
 						<option value="" style="font-size: large;">SELECT A STATE</option>
 						<option value="KARNATAKA">KARNATAKA</option>
 
 					</select>
+					</fieldset>
 
 				</div>
 
-				<div class="col-md-3" style="padding-right: 4px">
-
+				<div class="col-md-3">
+                    <fieldset class="form-group">
 					<label for="district" class="form-lbl" style="font-size: large;"><b style="color: white;">District</b></label>
 					<select id="district" class="form-control" name="district" required>
 
@@ -673,11 +679,11 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="BELGAUM">BELGAUM</option>
 
 					</select>
-
+                    </fieldset>
 				</div>
 
-				<div class="col-md-3" style="padding-right: 4px">
-
+				<div class="col-md-3">
+                   <fieldset class="form-group">
 					<label for="taluk" class="form-lbl" style="font-size: large;"><b style="color: white;">Taluk</b></label>
 					<select id="taluk" class="form-control" name="taluk" required>
 						<option value="">SELECT A TALUK</option>
@@ -702,13 +708,14 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="khanapur">KHANAPUR</option>
 
 					</select>
+					</fieldset>
 				</div>
 
 				<div class="col-md-3">
-
+                    <fieldset class="form-group">
 					<label class="form-lbl" for="hobli" style="font-size: large;">
 						<b style="color: white;">Hobli</b>
-					</label> <select class="form-control" name="hobli" id="hobli" required>
+					</label> <select class="form-control select2" name="hobli" id="hobli" required>
 						<option value="">SELECT A HOBLI</option>
 						
 						<option value="HUNCHA">HUNCHA</option>
@@ -767,13 +774,14 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="Gunji">GUNJI</option>
 
 					</select>
+					</fieldset>
 				</div>
 			</div>
-			<br>
 			
 			<div class="row">
-				<div class="col-md-3" style="padding-right: 1px">
-
+				<div class="col-md-3">
+				   <fieldset class="form-group">
+				   
 					<label class="form-lbl" for="village" style="font-size: large;"><b style="color: white;">Village</b></label>
 					<select class="form-control select2" name="village" id="village" required>
 						<option value="">SELECT A VILLAGE</option>
@@ -957,24 +965,24 @@ document.getElementById("hobli").addEventListener("change", function() {
 						<option value="Anagadi">ANAGADI</option>
 
 					</select>
-
+                   </fieldset>
 				</div>		 
 
-				<div class="col-md-3" style="padding-left: 8px; padding-right: 4px">
+				<div class="col-md-3">
 					<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"> <b style="color: white;">Survey Number</b></label> 
 						<input type="number" name="surveyNumber" class="form-control" id="" placeholder="">
 					</fieldset>
 				</div>
 
-				<div class="col-md-3" style="padding-left: 4px; padding-right: 4px">
+				<div class="col-md-3">
 					<fieldset class="form-group">
 						<label class="form-lbl" style="font-size: large;"> <b style="color: white;">Hissa Number</b></label> 
 						<input type="number" name="hissaNumber" class="form-control" id="" placeholder="">
 						</fieldset>
 					</div>
 
-				<div class="col-md-3" style="padding-left: 4px;">
+				<div class="col-md-3">
 				    <fieldset class="form-group">
 					  <label class="form-lbl" style="font-size: large;"><b style="color: white;">Total Acres</b></label> 
 					  <input type="text" name="totalAcres" class="form-control" id="" placeholder="">
@@ -982,11 +990,14 @@ document.getElementById("hobli").addEventListener("change", function() {
 				</div>
 
 			</div>
-			<div class="col-md-3" style="padding-left: 4px;">
-		 				<div class="form-group view-password">  
+			
+			<div class="row">
+			<div class="col-md-3">
+		 				<div class="form-group">  
                             <label class="form-lbl" style="font-size: large;"><b style="color: white;">Image</b></label> 
                             	<input type="file" name="image" class="form-control" id="" placeholder="">
                          </div>
+            </div>
             </div>
 			<br>
 			<center><button type="submit" class="btn btn-warning" 

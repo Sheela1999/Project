@@ -607,12 +607,12 @@ document.getElementById("hobli").addEventListener("change", function() {
 <body>
 <nav class="navbar navbar-expand-lg navbar-light text-white " style="background-color:#0d6efd;">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#" style="padding-right: 10px;">LandRecords</a>
+    <a class="navbar-brand text-white" href="#">LandRecords</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    <h5 style="color: white; padding-left: 950px;">${Admin.adminName}</h5>
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -1000,6 +1000,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 </table>
 <h5 style="color: red">${NotFound}</h5>
 <h5 style="color: orange">${delete}</h5>
+<h5 style="color: orange">${Edited}</h5>
 
    </div>
 </div>

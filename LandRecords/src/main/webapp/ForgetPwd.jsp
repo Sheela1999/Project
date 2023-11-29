@@ -216,14 +216,14 @@ label:not(label:last-child) {
 		 <button type="submit" class="button">Send OTP</button>
 				</form>
 				
-				<form id="login" action="checksotp" method="post">	 
+				<form id="login" action="checksotp" method="post">
+				<h6 style="color: orange;">${otpsent}</h6>	 
 				<hr>
 				<div class="field">	                  
                 <input name="email" type="hidden" value="${email}" >
                   <label for="otp">OTP</label>
                   <input type="number" name="otp" id="otp" placeholder="Enter OTP" required />
                   </div>
-                <h6 style="color: orange;">${otpsent}</h6>
  				 	 
 				<button type="submit" class="button">Submit</button>
 				</form>	

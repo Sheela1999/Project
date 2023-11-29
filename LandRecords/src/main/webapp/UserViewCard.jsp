@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Main Page</title>
+<title>User Details</title>
 
 <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style type="text/css">
+<style>
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
@@ -23,7 +23,7 @@
 }
 
 body {
-  background-image: url("https://www.ugaoo.com/cdn/shop/articles/shutterstock_391127050.jpg?v=1661876959");
+  background-image: url("https://images.pexels.com/photos/5806539/pexels-photo-5806539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -62,17 +62,20 @@ body::before {
   flex-wrap: wrap;
 }
 
-.button {
-  width: 100%;
-  padding: 10px;
-  font-size: 20px;
-  border-radius: 5px;
-  border: none;
-  margin: 15px 0 0;
-  cursor: pointer;
-  background-color: rgb(255 255 0 / 60%);
+.box {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.3);
   color: white;
-  font-weight: bold;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: 500ms;
+}
+
+.box h5, h6 {
+  color: white;
 }
 
 @media screen and (max-width: 715px) {
@@ -81,9 +84,8 @@ body::before {
     
   }
 }
-
-</style>
-
+  </style>
+  
 </head>
 <body>
 
@@ -94,12 +96,10 @@ body::before {
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <h5 style="color: white; padding-left: 970px;">${Admin.adminName}</h5>
-    
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
-                    <a class="nav-link text-white" href="SignIn.jsp">LOGOUT</a>
+                    <a class="nav-link text-white" href="UserSignIn.jsp" role="button" style="padding-left: 1050px">LOGOUT</a>
                 </li>
           <li class="nav-item">
           <a class="nav-link text-white" href="Index.jsp">HOME</a>
@@ -109,18 +109,43 @@ body::before {
   </div>
 </nav>
 
-	<div id="wrapper">
-	
+<div id="wrapper">
 	<div class="container" style="text-align: center">
 
-				<a class="btn btn-warning" href="Save.jsp" role="button"
-					style="font-weight: bold; color: white;">ADD RECORDS</a> &nbsp; &nbsp; <a class="btn btn-warning"
-					href="Read.jsp" role="button"
-					style="font-weight: bold; color: white;">VIEW RECORDS</a>
-			</div>
-	</div>
+<center>
+  <div class="box">
+    <br>
+    <h5 class="box-title" style="color: white;">LAND OWNER DETAILS</h5>
+    <br>
+    <h6 class="box-subtitle mb-2">
+      <span style="color: #0edde8;">PROFILE IMAGE:</span> ${read.image}
+    </h6>
+    <br>
+    <h6 class="box-subtitle mb-2">
+      <span style="color: #0edde8;">OWNER NAME:</span> ${read.ownerName}
+    </h6>
+    <br>
+    <h6 class="box-subtitle mb-2">
+      <span style="color: #0edde8;">AADHAR NUMBER:</span> ${read.aadharNumber}
+    </h6>
+    <br>
+    <h6 class="box-subtitle mb-2">
+      <span style="color: #0edde8;">MOBILE NUMBER:</span> ${read.mobileNumber}
+    </h6>
+    <br>
+    <h6 class="box-subtitle mb-2">
+      <span style="color: #0edde8;">YEAR OF REGISTRATION:</span> ${read.year}
+    </h6>
+    <br>
+  </div>
+</center>
 
-	<footer class="bg-primary text-center text-white fixed-bottom">
+  
+   </div>  
+</div>
+ 
+  
+  <footer class="bg-primary text-center text-white fixed-bottom">
 		<!-- Copyright -->
 		<div class="text-center p-3" style="background-color: #343a40;">
 			© 2023 Copyright: <a class="text-white"
