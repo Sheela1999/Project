@@ -117,9 +117,7 @@ body::before {
     <br>
     <h5 class="box-title" style="color: white;">LAND OWNER DETAILS</h5>
     <br>
-    <h6 class="box-subtitle mb-2">
-      <span style="color: #0edde8;">PROFILE IMAGE:</span> ${read.image}
-    </h6>
+    <img src="${read.image}" alt="IMAGE" class="box-subtitle mb-2" style="color: #0edde8;">
     <br>
     <h6 class="box-subtitle mb-2">
       <span style="color: #0edde8;">OWNER NAME:</span> ${read.ownerName}

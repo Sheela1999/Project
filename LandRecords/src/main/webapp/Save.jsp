@@ -622,7 +622,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 		<br>
 		<br>
 
-		<form class="form" action="save" method="post">
+		<form class="form" action="save" method="post" enctype="multipart/form-data">
 			<div class="row">
 
 				<div class="col-md-3">
@@ -995,7 +995,7 @@ document.getElementById("hobli").addEventListener("change", function() {
 			<div class="col-md-3">
 		 				<div class="form-group">  
                             <label class="form-lbl" style="font-size: large;"><b style="color: white;">Image</b></label> 
-                            	<input type="file" name="image" class="form-control" id="" placeholder="">
+                            	<input type="file" name="imagePath" class="form-control" id="" placeholder="">
                          </div>
             </div>
             </div>

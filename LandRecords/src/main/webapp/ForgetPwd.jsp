@@ -212,7 +212,7 @@ label:not(label:last-child) {
           <input id="email" type="email" name="email" value="<%= (request.getParameter("email") != null) ? request.getParameter("email") : "" %>" placeholder="example@gmail.com" required />
         </div>
         <h5 style="color: red;">${Email}</h5>
- 		<p align="right"> <a href="ForgetPwd.jsp">Resend OTP</a></p>
+ 		
 		 <button type="submit" class="button">Send OTP</button>
 				</form>
 				

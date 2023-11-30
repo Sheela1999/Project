@@ -1,5 +1,7 @@
 package com.xworkz.landrecords.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.xworkz.landrecords.dto.LandRecordsDto;
 import com.xworkz.landrecords.dto.UserDto;
@@ -28,7 +31,16 @@ public class LandRecordController {
 	private UserService userService;
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveRecords(LandRecordsDto dto, Model model) {
+	public String saveRecords(LandRecordsDto dto, Model model, @RequestParam ("imagePath") MultipartFile imagePath) throws IllegalStateException, IOException {
+		
+		String uploadPath = "C:\\Users\\india\\Desktop\\ProjectImage\\";
+		String orgFileName = imagePath.getOriginalFilename().substring(imagePath.getOriginalFilename().lastIndexOf("."),
+				imagePath.getOriginalFilename().length());
+		String uniqueName = dto.getOwnerName() + orgFileName;
+		imagePath.transferTo(new File (uploadPath + uniqueName));
+		
+		dto.setImage(uploadPath + uniqueName);
+		
 		boolean status = service.addRecords(dto, model);
 		System.out.println(status);
 
