@@ -64,7 +64,6 @@ public class AdminController {
 				return "Main";
 			}
 			model.addAttribute("IsOTPvalid", "Invalid OTP, Please enter correct OTP");
-			return null;
 		}
         return "SignIn";
 		

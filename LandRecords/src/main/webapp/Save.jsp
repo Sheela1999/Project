@@ -45,14 +45,14 @@
 body::before {
   position: absolute;
   content: "";
-  height: 110vh;
+  height: 120vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #wrapper {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
@@ -62,7 +62,7 @@ body::before {
 @media screen and (max-width: 715px) {
   body,
   body::before {
-   height: 1800px;
+   height: 1950px;
   }
    
 </style>
@@ -603,10 +603,10 @@ document.getElementById("hobli").addEventListener("change", function() {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <li class="nav-item">
-                    <a class="nav-link text-white" href="UserSignIn.jsp">LOGOUT</a>
+                    <a class="nav-link text-white" href="SignIn.jsp">LOGOUT</a>
                 </li>
           <li class="nav-item">
-          <a class="nav-link text-white" href="User.jsp">HOME</a>
+          <a class="nav-link text-white" href="Index.jsp">HOME</a>
         </li>
       </ul>
     </div>
@@ -616,10 +616,9 @@ document.getElementById("hobli").addEventListener("change", function() {
 <div id="wrapper">
 	<div class="container">
 
-		<h5 style="color: orange;">${Saved}</h5>
-		<h5 style="color: red;">${Exist}</h5>
 		<h1 align="center"><b style="color: white;">Land Records</b></h1>
-		<br>
+        <h3 style="color: orange;">${Saved}</h3>
+		<h4 style="color: red;">${Exist}</h4>
 		<br>
 
 		<form class="form" action="save" method="post" enctype="multipart/form-data">
@@ -999,12 +998,12 @@ document.getElementById("hobli").addEventListener("change", function() {
                          </div>
             </div>
             </div>
-			<br>
+			<h4 style="color: red;">${HnSnExist}</h4>
 			<center><button type="submit" class="btn btn-warning" 
 			style="padding-right: 40px; padding-left: 40px"><b style="color: white;">save</b></button></center>
 
 		</form>
-		<br>
+		
 	</div>
 </div>
 	

@@ -60,14 +60,14 @@ body {
 body::before {
   position: absolute;
   content: "";
-  height: 110vh;
+  height: 120vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 #wrapper {
   position: absolute;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100vw;
@@ -195,6 +195,12 @@ label:not(label:last-child) {
     <div class="box">
 
       <form id="signin" action="login" method="get">
+      
+           <h5 style="color: red;">${IsEmailValid}</h5>
+					
+		   <h5 style="color: red;">${IsAccountExist}</h5>
+		   
+		   <h5 style="color: red;">${IsOTPvalid}</h5>
         
                 <center><h2 class="title">Sign In</h2></center>
         <hr>
@@ -202,9 +208,8 @@ label:not(label:last-child) {
           <label for="email">Email</label>
           <input id="email" type="email" name="email" value="<%= (request.getParameter("email") != null) ? request.getParameter("email") : "" %>" placeholder="example@gmail.com" required />
         </div>
-        <h6 class="model">${IsEmailValid}</h6>
-					
-		<h6 class="model">${IsAccountExist}</h6>
+		
+		<p align="right"><a href="SignIn.jsp" style="color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));">Resend OTP</a></p>
 		
 		<button type="submit" class="button">Send OTP</button>
 		</form>
@@ -217,7 +222,6 @@ label:not(label:last-child) {
           <label for="otp">OTP</label>
           <input type="number" name="otp" id="otp" placeholder="Enter OTP" required />
         </div>
-        <h6 class="model">${IsOTPvalid}</h6>
         
         <button type="submit" class="button">SignIn</button>
         

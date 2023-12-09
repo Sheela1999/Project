@@ -183,7 +183,7 @@ label:not(label:last-child) {
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
   
-                <li class="nav-item"><a class="nav-link text-white" href="Index.jsp" style="padding-left: 1100px">HOME</a>
+                <li class="nav-item"><a class="nav-link text-white" href="User.jsp" style="padding-left: 1100px">HOME</a>
 					</li>
       </ul>
     </div>
@@ -193,18 +193,15 @@ label:not(label:last-child) {
 <div id="wrapper">
     <div class="container">
        <div class="box">
-            
-             <h5 style="color: orange;" align="center">${Login}</h5>
-             <h5 style="color: red;" align="center">${Accont}</h5>
              
              <form id="forgotpwd" action="forget" method="post">
             
               <center><h2 class="title">Forgot Password</h2></center>
 
-			<h6 style="color: orange;">${Checking}</h6>
-			<h6 style="color: red;">${Foundotp}</h6>
-			<h6 style="color: red;">${Findotp1}</h6>
-			<h6 style="color: red;">${Findotp}</h6>
+			<h5 style="color: orange;">${Checking}</h5>
+			<h5 style="color: red;">${Foundotp}</h5>
+			<h5 style="color: red;">${Findotp1}</h5>
+			<h5 style="color: red;">${Findotp}</h5>
 					 
 		<hr>
         <div class="field">
@@ -213,6 +210,7 @@ label:not(label:last-child) {
         </div>
         <h5 style="color: red;">${Email}</h5>
  		
+ 		<p align="right"> <a class="to" href="ForgetPwd.jsp" style="color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));">Resend OTP</a></p>
 		 <button type="submit" class="button">Send OTP</button>
 				</form>
 				
@@ -221,6 +219,7 @@ label:not(label:last-child) {
 				<hr>
 				<div class="field">	                  
                 <input name="email" type="hidden" value="${email}" >
+                
                   <label for="otp">OTP</label>
                   <input type="number" name="otp" id="otp" placeholder="Enter OTP" required />
                   </div>

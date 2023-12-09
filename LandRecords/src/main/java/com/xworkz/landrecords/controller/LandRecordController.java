@@ -48,7 +48,7 @@ public class LandRecordController {
 			model.addAttribute("Saved", "Land Records Saved Successfully");
 			return "Save";
 		} else {
-			model.addAttribute("Saved", "LandRecords Not Saved");
+			model.addAttribute("Saved", "LandRecords Not Saved, Give proper details");
 			return "Save";
 		}
 	}
@@ -61,10 +61,10 @@ public class LandRecordController {
 		if (found != null) {
 			model.addAttribute("found", found);
 			return "Read";
-		} else {
-			model.addAttribute("NotFound", "Searching records are not found");
+		} 
+			model.addAttribute("notFound", "Searching records are not found");
 			return "Read";
-		}
+		
 	}
 
 	@PostMapping(value = "/edit")
@@ -77,6 +77,7 @@ public class LandRecordController {
 			model.addAttribute("Edited", "updated in records");
 			return "Read";
 		}
+		System.out.println("not updated");
 		return "Edit";
 	}
 

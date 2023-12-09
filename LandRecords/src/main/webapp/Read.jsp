@@ -630,8 +630,9 @@ document.getElementById("hobli").addEventListener("change", function() {
 <div id="wrapper">
 <div class="container">
 			
-			<h1 align="center"><b style="color: white;">Land Records</b></h1> 
-			<br> 
+			<h1 align="center"><b style="color: white;">Land Records</b></h1>  
+			<h5 style="color: red">${NotFound}</h5>
+			<br>
 			<form class="search" action="check" method="post">
 			<div class="form-row">
 				<div class="col">
@@ -998,7 +999,6 @@ document.getElementById("hobli").addEventListener("change", function() {
   
   </tbody>
 </table>
-<h5 style="color: red">${NotFound}</h5>
 <h5 style="color: orange">${delete}</h5>
 <h5 style="color: orange">${Edited}</h5>
 

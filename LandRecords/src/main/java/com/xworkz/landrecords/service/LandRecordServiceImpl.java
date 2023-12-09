@@ -33,21 +33,21 @@ public class LandRecordServiceImpl implements LandRecordService {
 					Validator validator = factory.getValidator();
 					Set<ConstraintViolation<LandRecordsDto>> violation = validator.validate(dto);
 
-						if (violation.isEmpty()) {
-							LandRecordsDto exist = ifExists(dto.getHissaNumber(), dto.getSurveyNumber(), model);
-							if(exist!=null) {
-								System.out.println("Already Exist");
-								return false;
-							}
-							
-							boolean save = repo.addRecords(dto);
-							System.out.println(save);
-							System.out.println("Data Validated");
-							return true;
-						} else {
-							System.out.println("Data Not Validated");
-							System.out.println(violation);
+					if (violation.isEmpty()) {
+						LandRecordsDto exist = ifExists(dto.getHissaNumber(), dto.getSurveyNumber(), model);
+						if (exist != null) {
+							System.out.println("Already Exist");
+							return false;
 						}
+
+						boolean save = repo.addRecords(dto);
+						System.out.println(save);
+						System.out.println("Data Validated");
+						return true;
+					} else {
+						System.out.println("Data Not Validated");
+						System.out.println(violation);
+					}
 				} else {
 					System.out.println("Survey Number is not valid");
 					return false;
@@ -65,20 +65,22 @@ public class LandRecordServiceImpl implements LandRecordService {
 
 	@Override
 	public List<LandRecordsDto> findByHobliAndVillage(String hobli, String village, Model model) {
-		if (hobli != null && !hobli.isEmpty()) {
-			if (village != null && !village.isEmpty()) {
-				try {
-					List<LandRecordsDto> dtos = repo.findByHobliAndVillage(hobli, village);
+		try {
+			if (hobli != null && !hobli.isEmpty() && village != null && !village.isEmpty()) {
+
+				List<LandRecordsDto> dtos = repo.findByHobliAndVillage(hobli, village);
+				if (dtos != null && !dtos.isEmpty()) {
+					System.out.println("Dto is present");
 					return dtos;
-				} catch (Exception e) {
-					System.out.println("No result found");
-					return null;
 				}
+				model.addAttribute("NotFound", "Searching records are not found");
+				return null;
 			}
-			model.addAttribute("IsVillageValid", "Village is not valid");
+
+		} catch (Exception e) {
+			System.out.println("No result found");
 			return null;
 		}
-		model.addAttribute("Hobli", "Hobli is not valid");
 		return null;
 	}
 
@@ -90,28 +92,32 @@ public class LandRecordServiceImpl implements LandRecordService {
 	@Override
 	public boolean updateBySurveyNumber(String ownerName, Long mobileNumber, String aadharNumber, Integer hissaNumber,
 			Integer surveyNumber, Model model) {
-		if (hissaNumber > 0 && hissaNumber < 21) {
-			if (surveyNumber > 0 && surveyNumber < 150) {
-				if (aadharNumber.length() == 12) {
-					if (mobileNumber > 999999999) {
-						if (ownerName.length() > 3) {
-							return repo.updateBySurveyNumber(ownerName, mobileNumber, aadharNumber, hissaNumber,
-									surveyNumber, model);
-						}
-						model.addAttribute("nameError", "check the owner name");
-						return false;
-					}
-					model.addAttribute("pnError", "check mobile number");
-					return false;
-				}
+
+		boolean updated = true;
+		if (hissaNumber > 0 && hissaNumber < 21 && surveyNumber > 0 && surveyNumber < 150) {
+			if (aadharNumber.length() != 12) {
 				model.addAttribute("anError", "check Aadhar number");
-				return false;
+				updated = false;
 			}
-			model.addAttribute("snError", "check survey number");
-			return false;
+
+			if (mobileNumber < 999999999) {
+				model.addAttribute("pnError", "check mobile number");
+				updated = false;
+			}
+
+			if (ownerName.length() < 3) {
+				model.addAttribute("nameError", "check the owner name");
+				updated = false;
+			}
+		} else {
+			model.addAttribute("hnSnError", "check hissa number and Survey number");
+			updated = false;
 		}
-		model.addAttribute("hnError", "check hissa number");
-		return false;
+		if (updated) {
+			updated = repo.updateBySurveyNumber(ownerName, mobileNumber, aadharNumber, hissaNumber, surveyNumber,
+					model);
+		}
+		return updated;
 	}
 
 	@Override
@@ -129,42 +135,40 @@ public class LandRecordServiceImpl implements LandRecordService {
 
 	@Override
 	public LandRecordsDto ifExists(Integer hissaNumber, Integer surveyNumber, Model model) {
-		
+
 		try {
-			LandRecordsDto list =	repo.ifExists(hissaNumber, surveyNumber);
-			if(list!=null) {
-				model.addAttribute("Exist", "Already Exist");
+			LandRecordsDto list = repo.ifExists(hissaNumber, surveyNumber);
+			if (list != null) {
+				model.addAttribute("Exist", "Given Hissa Number and Survey Number is Already Exist");
 				return list;
 			}
-			
-			
+
 		} catch (Exception e) {
 			System.out.println("Data not present");
 			return null;
 		}
 		return null;
-		
+
 	}
-		
+
 	@Override
 	public LandRecordsDto editRecords(Integer hissaNumber, Integer surveyNumber, Model model) {
-		
+
 		try {
-			LandRecordsDto list =	repo.ifExists(hissaNumber, surveyNumber);
-			if(list!=null) {
+			LandRecordsDto list = repo.ifExists(hissaNumber, surveyNumber);
+			if (list != null) {
 				model.addAttribute("Exist", "Already Exist");
 				return list;
 			}
-			
-			
+
 		} catch (Exception e) {
 			System.out.println("Data not present");
 			return null;
 		}
 		return null;
-		
-	}				
-					
+
+	}
+
 	@Override
 	public boolean updateStatus(Integer hissaNumber, Integer surveyNumber) {
 		if (hissaNumber > 0 && hissaNumber < 25) {

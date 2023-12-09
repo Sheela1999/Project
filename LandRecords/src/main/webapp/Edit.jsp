@@ -84,7 +84,7 @@ body::before {
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <h5 style="color: white; padding-left: 1000px;">${Admin.adminName}</h5>
+    <h5 style="color: white; padding-left: 950px;">${Admin.adminName}</h5>
     
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -103,7 +103,11 @@ body::before {
 	<div class="container">
 
 		<h1 align="center"><b style="color: white;">Land Records</b></h1>
-		<h5 style="color: orange">${Edited}</h5>
+		<h5 style="color: red">${nameError}</h5>
+		<h5 style="color: red">${pnError}</h5>
+		<h5 style="color: red">${anError}</h5>
+		<h5 style="color: red">${hnSnError}</h5>
+		
 		<br> 
 		<br>
 		<form class="form" action="edit" method="post">
@@ -114,7 +118,6 @@ body::before {
 						type="text" name="ownerName" class="form-control" id=""
 						placeholder="">
 				</div>
-				<h5 style="color: red">${nameError}</h5>
 				
 				&nbsp; &nbsp;&nbsp;
 				<div class="col-md-3">
@@ -123,7 +126,6 @@ body::before {
 						type="number" name="mobileNumber" class="form-control" id=""
 						placeholder="">
 				</div>
-				<h5 style="color: red">${pnError}</h5>
 				
 				&nbsp; &nbsp;&nbsp;
 				<div class="col-md-3">
@@ -133,7 +135,6 @@ body::before {
 							placeholder="">
 					</fieldset>
 				</div>
-				<h5 style="color: red">${anError}</h5>
 
 			</div>
 
@@ -146,8 +147,6 @@ body::before {
 							value="${param.hissaNumber}" id="" placeholder="" readOnly>
 					</div>
 
-					<h5 style="color: red">${hnError}</h5>
-
 				</div>
 
 				&nbsp; &nbsp;&nbsp; &nbsp;
@@ -158,8 +157,6 @@ body::before {
 							value="${param.surveyNumber}" id="" placeholder="" readOnly>
 					</fieldset>
 				</div>
-				&nbsp; &nbsp;
-				<h5 style="color: red">${snError}</h5>
 			</div>
 			<br>
 

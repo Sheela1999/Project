@@ -63,7 +63,7 @@ body::before {
 }
 
 .box {
-  width: 350px;
+  width: 400px;
   background: rgba(255, 255, 255, 0.3);
   color: white;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
@@ -102,7 +102,7 @@ body::before {
                     <a class="nav-link text-white" href="UserSignIn.jsp" role="button" style="padding-left: 1050px">LOGOUT</a>
                 </li>
           <li class="nav-item">
-          <a class="nav-link text-white" href="Index.jsp">HOME</a>
+          <a class="nav-link text-white" href="User.jsp">HOME</a>
         </li>
       </ul>
     </div>
@@ -115,25 +115,25 @@ body::before {
 <center>
   <div class="box">
     <br>
-    <h5 class="box-title" style="color: white;">LAND OWNER DETAILS</h5>
+    <h4 class="box-title" style="color: white;">LAND OWNER DETAILS</h4>
     <br>
     <img src="${read.image}" alt="IMAGE" class="box-subtitle mb-2" style="color: #0edde8;">
     <br>
-    <h6 class="box-subtitle mb-2">
+    <h5 class="box-subtitle mb-2">
       <span style="color: #0edde8;">OWNER NAME:</span> ${read.ownerName}
-    </h6>
+    </h5>
     <br>
-    <h6 class="box-subtitle mb-2">
-      <span style="color: #0edde8;">AADHAR NUMBER:</span> ${read.aadharNumber}
-    </h6>
-    <br>
-    <h6 class="box-subtitle mb-2">
+    <h5 class="box-subtitle mb-2">
       <span style="color: #0edde8;">MOBILE NUMBER:</span> ${read.mobileNumber}
-    </h6>
+    </h5>
     <br>
-    <h6 class="box-subtitle mb-2">
+    <h5 class="box-subtitle mb-2">
+      <span style="color: #0edde8;">AADHAR NUMBER:</span> ${read.aadharNumber}
+    </h5>
+    <br>
+    <h5 class="box-subtitle mb-2">
       <span style="color: #0edde8;">YEAR OF REGISTRATION:</span> ${read.year}
-    </h6>
+    </h5>
     <br>
   </div>
 </center>
